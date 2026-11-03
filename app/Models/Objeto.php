@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Support\Facades\Storage;
 
 class Objeto extends Model
 {
@@ -72,7 +71,8 @@ class Objeto extends Model
 
     public function urlFoto(): string
     {
-        return $this->foto ? Storage::url($this->foto) : asset('img/sin-foto.svg');
+        // asset() usa la dirección con la que se abrió el sistema (artisan serve o XAMPP).
+        return asset($this->foto ? 'storage/' . $this->foto : 'img/sin-foto.svg');
     }
 
     public function claseEstado(): string
