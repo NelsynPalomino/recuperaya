@@ -36,7 +36,7 @@
                 <a href="{{ route('usuarios.index') }}" @class(['activo' => request()->routeIs('usuarios.*')])>Usuarios</a>
                 <a href="{{ route('categorias.index') }}" @class(['activo' => request()->routeIs('categorias.*', 'lugares.*')])>Catálogos</a>
             @endcan
-            <a href="{{ route('notificaciones.index') }}" @class(['activo' => request()->routeIs('notificaciones.*')])>Avisos@if($noLeidas)<span class="punto">{{ $noLeidas }}</span>@endif</a>
+            <a href="{{ route('notificaciones.index') }}" @class(['activo' => request()->routeIs('notificaciones.*')])>Avisos @if($noLeidas)<span class="punto">{{ $noLeidas }}</span>@endif</a>
             <span class="usuario-chip">{{ $u->name }} · {{ $roles[$u->rol] ?? '' }}</span>
             <form method="POST" action="{{ route('logout') }}">@csrf<button type="submit" title="Cerrar sesión de {{ $u->name }}">Salir</button></form>
         </nav>
