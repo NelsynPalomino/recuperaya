@@ -1,0 +1,25 @@
+@extends('layouts.app')
+@section('titulo', 'Reportes')
+@section('contenido')
+<div class="encabezado"><div><h1>Reportes</h1><p>Indicadores de objetos registrados entre {{ \Carbon\Carbon::parse($desde)->format('d/m/Y') }} y {{ \Carbon\Carbon::parse($hasta)->format('d/m/Y') }}.</p></div></div>
+<form class="tarjeta filtros f3 no-imprimir" method="GET" action="{{ route('estadisticas.index') }}" style="margin-bottom:18px">
+    <div class="campo"><label for="desde">Desde</label><input type="date" id="desde" name="desde" value="{{ $desde }}"></div>
+    <div class="campo"><label for="hasta">Hasta</label><input type="date" id="hasta" name="hasta" value="{{ $hasta }}"></div>
+    <div class="acciones">
+        <button class="boton" type="submit">Ver</button>
+        <a class="boton secundario" href="{{ route('estadisticas.imprimir', ['desde' => $desde, 'hasta' => $hasta]) }}" target="_blank">PDF / imprimir</a>
+        <a class="boton secundario" href="{{ route('estadisticas.csv', ['desde' => $desde, 'hasta' => $hasta]) }}">Excel (CSV)</a>
+        @can('administrar')<a class="boton secundario" href="{{ route('estadisticas.ml') }}">Datos para ML</a>@endcan
+    </div>
+</form>
+@include('estadisticas._kpis')
+<div class="grid grid-3">
+    <div class="tarjeta">
+        <h2>Por estado</h2>
+        @include('estadisticas._barras', ['datos' => collect(\App\Models\Objeto::ESTADOS)->map(fn ($e) => ['nombre' => $e, 'total' => $r['por_estado'][$e] ?? 0])->all()])
+        <p style="color:var(--gris);font-size:.85rem;margin-bottom:0">Reclamos rechazados: {{ $r['reclamos_rechazados'] }}</p>
+    </div>
+    <div class="tarjeta"><h2>Por categoría</h2>@include('estadisticas._barras', ['datos' => $r['por_categoria']->map(fn ($x) => ['nombre' => $x->nombre, 'total' => (int) $x->total])->all()])</div>
+    <div class="tarjeta"><h2>Por lugar del campus</h2>@include('estadisticas._barras', ['datos' => $r['por_lugar']->map(fn ($x) => ['nombre' => $x->nombre, 'total' => (int) $x->total])->all()])</div>
+</div>
+@endsection

@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Notificacion extends Model
+{
+    protected $table = 'notificaciones';
+
+    protected $fillable = ['user_id', 'titulo', 'mensaje', 'enlace', 'leida', 'enviada_correo'];
+
+    protected $casts = ['leida' => 'boolean', 'enviada_correo' => 'boolean'];
+}
