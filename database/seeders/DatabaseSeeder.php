@@ -26,7 +26,56 @@ class DatabaseSeeder extends Seeder
         foreach (['Celular', 'Documento / carné', 'Llaves', 'Mochila / bolso', 'Ropa', 'Útiles / calculadora', 'Laptop / tablet', 'Audífonos', 'Billetera', 'Otros'] as $c) {
             Categoria::create(['nombre' => $c]);
         }
-        foreach (['Biblioteca', 'Cafetería', 'Aulas pabellón A', 'Aulas pabellón B', 'Laboratorio de cómputo', 'Auditorio', 'Patio central', 'Estacionamiento', 'Gimnasio / losa deportiva', 'Servicios higiénicos'] as $l) {
+        // Ambientes de la sede Huancayo (pabellones A al L).
+        foreach ([
+            'Biblioteca',
+            'Cafetería',
+            'Pabellón A – Administración y oficinas',
+            'Pabellón B – Bienestar Universitario',
+            'Laboratorio de cómputo',
+            'Auditorio',
+            'Patio central',
+            'Estacionamiento',
+            'Gimnasio / losa deportiva',
+            'Servicios higiénicos',
+            'Pabellón B – Centro Asistencial de Salud',
+            'Pabellón C – Aulas',
+            'Pabellón D – Aulas',
+            'Pabellón E – Aulas',
+            'Pabellón F – Hub de Información (biblioteca, pisos 2 al 4)',
+            'Pabellón F – Laboratorios de Ingeniería',
+            'Pabellón F – Laboratorios de simulación de Medicina Humana',
+            'Pabellón G – Laboratorios de Ingeniería',
+            'Pabellón G – Laboratorios de simulación de Medicina Humana',
+            'Pabellón H – Aulas',
+            'Pabellón I – Aulas',
+            'Pabellón J – Aulas',
+            'Pabellón J – Laboratorio de Procesos (J108)',
+            'Pabellón K',
+            'Pabellón L – Aulas',
+            'Centro de Simulación de Ciencias de la Salud',
+            'Laboratorio de Análisis Clínico',
+            'Laboratorio de Anatomía Patológica',
+            'Laboratorio de Terapia Física y Rehabilitación',
+            'Laboratorio de Radiología',
+            'Laboratorio de Ingeniería Civil',
+            'Talleres de manufactura y diseño digital',
+            'Comedor y concesiones de alimentos',
+            'Áreas verdes y plazas',
+            'Ingreso principal (Av. San Carlos)',
+            'Servicios higiénicos – Pabellón A',
+            'Servicios higiénicos – Pabellón B',
+            'Servicios higiénicos – Pabellón C',
+            'Servicios higiénicos – Pabellón D',
+            'Servicios higiénicos – Pabellón E',
+            'Servicios higiénicos – Pabellón F',
+            'Servicios higiénicos – Pabellón G',
+            'Servicios higiénicos – Pabellón H',
+            'Servicios higiénicos – Pabellón I',
+            'Servicios higiénicos – Pabellón J',
+            'Servicios higiénicos – Pabellón K',
+            'Servicios higiénicos – Pabellón L',
+        ] as $l) {
             Lugar::create(['nombre' => $l]);
         }
 
