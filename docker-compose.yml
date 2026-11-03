@@ -1,0 +1,57 @@
+# RecuperaYa – orquestación con Docker Compose.
+#   docker compose up -d --build     -> http://localhost:8080 (sistema) y http://localhost:8081 (phpMyAdmin)
+#   docker compose down              -> detiene los servicios (los datos quedan en el volumen "datos_mysql")
+services:
+  db:
+    image: mysql:8.0
+    container_name: recuperaya_db
+    environment:
+      MYSQL_DATABASE: recuperaya_laravel
+      MYSQL_USER: recuperaya
+      MYSQL_PASSWORD: recuperaya2026
+      MYSQL_ROOT_PASSWORD: root2026
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - datos_mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot2026"]
+      interval: 5s
+      retries: 20
+
+  app:
+    build: .
+    container_name: recuperaya_app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      APP_NAME: RecuperaYa
+      APP_ENV: production
+      APP_DEBUG: "false"
+      APP_URL: http://localhost:8080
+      APP_LOCALE: es
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: recuperaya_laravel
+      DB_USERNAME: recuperaya
+      DB_PASSWORD: recuperaya2026
+      MAIL_MAILER: log
+    ports:
+      - "8080:80"
+    volumes:
+      - fotos:/var/www/html/storage/app/public
+
+  phpmyadmin:
+    image: phpmyadmin:5
+    container_name: recuperaya_phpmyadmin
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+    ports:
+      - "8081:80"
+
+volumes:
+  datos_mysql:
+  fotos:
