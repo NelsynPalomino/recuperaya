@@ -202,3 +202,201 @@ tr:last-child td { border-bottom: 0; }
 nav[role=navigation] p.small { color: var(--gris); font-size: .85rem; }
 .error-campo { color: var(--rojo); font-size: .82rem; }
 .campo.con-error input, .campo.con-error select, .campo.con-error textarea { border-color: var(--rojo); }
+
+/* ==========================================================================
+   Tema visual 2.0 – morado y naranja, letra Poppins.
+   Se agrega al final para cambiar el aspecto sin tocar los estilos de arriba.
+   Para volver al diseño anterior basta con borrar este bloque.
+   ========================================================================== */
+:root {
+  --azul: #2a1660;          /* barra y títulos */
+  --azul-2: #6a3df0;        /* color principal */
+  --azul-claro: #f0ebff;
+  --acento: #ff8a3d;        /* naranja */
+  --acento-osc: #f0641a;
+  --verde: #12805c;
+  --verde-claro: #ddf7ec;
+  --rojo: #d6334c;
+  --rojo-claro: #ffe8ec;
+  --ambar: #9a5b00;
+  --ambar-claro: #fff1d9;
+  --gris: #646a85;
+  --gris-claro: #f1f0f8;
+  --texto: #1d1838;
+  --fondo: #f7f5fd;
+  --borde: #e4e0f2;
+  --radio: 18px;
+  --degradado: linear-gradient(135deg, #2a1660 0%, #5a2fd6 55%, #8f4cf0 100%);
+  --degradado-acento: linear-gradient(135deg, #ff9f43 0%, #ff6b6b 100%);
+  --sombra: 0 2px 6px rgba(42, 22, 96, .05), 0 10px 30px rgba(42, 22, 96, .08);
+  --sombra-alta: 0 18px 40px rgba(42, 22, 96, .18);
+}
+body {
+  font-family: "Poppins", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(900px 400px at 100% -10%, rgba(143, 76, 240, .10), transparent 60%),
+    radial-gradient(700px 360px at -10% 110%, rgba(255, 138, 61, .10), transparent 60%),
+    var(--fondo);
+  background-attachment: fixed;
+}
+h1, h2, h3 { color: var(--azul); letter-spacing: -.01em; }
+h1 { font-weight: 800; }
+h2, h3 { font-weight: 700; }
+a { color: var(--azul-2); }
+::selection { background: #d9ccff; }
+
+/* Barra superior */
+.barra { background: var(--degradado); box-shadow: 0 6px 24px rgba(42, 22, 96, .25); }
+.barra .contenedor { min-height: 68px; }
+.marca { font-size: 1.3rem; font-weight: 800; letter-spacing: -.01em; }
+.marca .logo {
+  width: 40px; height: 40px; border-radius: 12px; background: var(--degradado-acento); color: #fff;
+  box-shadow: 0 6px 16px rgba(255, 107, 107, .45); font-size: 1.2rem;
+}
+.marca small { letter-spacing: .04em; text-transform: uppercase; font-size: .62rem; opacity: .85; }
+.menu a, .menu button { color: #e9e2ff; font-weight: 500; border-radius: 999px; padding: 8px 14px; transition: background .15s, color .15s; }
+.menu a:hover, .menu button:hover { background: rgba(255, 255, 255, .14); }
+.menu a.activo { background: #fff; color: var(--azul); font-weight: 600; }
+.menu form button { background: rgba(255, 255, 255, .12); }
+.menu form button:hover { background: var(--acento); color: #fff; }
+.punto { background: var(--acento); color: #fff; box-shadow: 0 0 0 2px var(--azul); }
+
+/* Encabezado de cada página: banner con degradado */
+main { padding-top: 28px; }
+.encabezado {
+  background: var(--degradado); color: #fff; border-radius: 24px; padding: 28px 30px;
+  box-shadow: var(--sombra-alta); position: relative; overflow: hidden; align-items: center; margin-bottom: 22px;
+}
+.encabezado::before, .encabezado::after {
+  content: ""; position: absolute; border-radius: 50%; pointer-events: none;
+}
+.encabezado::before { width: 260px; height: 260px; right: -60px; top: -120px; background: rgba(255, 255, 255, .10); }
+.encabezado::after { width: 160px; height: 160px; right: 160px; bottom: -110px; background: rgba(255, 138, 61, .35); filter: blur(10px); }
+.encabezado > * { position: relative; z-index: 1; }
+.encabezado h1 { color: #fff; font-size: 1.9rem; }
+.encabezado p { color: #e6defc; }
+.encabezado .boton.secundario { background: rgba(255, 255, 255, .15); color: #fff; border-color: rgba(255, 255, 255, .35); }
+.encabezado .boton.secundario:hover { background: #fff; color: var(--azul); }
+
+/* Tarjetas */
+.tarjeta { border-color: var(--borde); border-radius: var(--radio); box-shadow: var(--sombra); padding: 22px; }
+.tarjeta h2 { font-size: 1.2rem; }
+.kpi { position: relative; overflow: hidden; transition: transform .15s, box-shadow .15s; }
+.kpi::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 5px; background: var(--degradado-acento); }
+.grid .kpi:nth-child(2n)::before { background: var(--degradado); }
+.kpi:hover { transform: translateY(-3px); box-shadow: var(--sombra-alta); }
+.kpi .valor {
+  font-size: 2.4rem; background: var(--degradado); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.kpi .etiqueta { font-weight: 500; }
+
+/* Catálogo */
+.objetos { gap: 20px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.objeto { border: 0; border-radius: 20px; box-shadow: var(--sombra); transition: transform .18s, box-shadow .18s; }
+.objeto:hover { transform: translateY(-6px); box-shadow: var(--sombra-alta); }
+.objeto .foto { transition: transform .4s; }
+.objeto:hover .foto { transform: scale(1.06); }
+.objeto .cuerpo { position: relative; z-index: 1; background: #fff; padding: 14px 16px 16px; }
+.objeto .codigo { color: var(--azul-2); font-weight: 700; letter-spacing: .06em; }
+.objeto .titulo { font-size: 1.05rem; color: var(--azul); }
+
+/* Insignias */
+.insignia { padding: 4px 12px; font-weight: 600; }
+
+/* Formularios */
+.campo label { color: var(--azul); }
+input[type=text], input[type=email], input[type=password], input[type=date], input[type=search], input[type=number], input[type=file], select, textarea {
+  border-radius: 12px; border: 1.5px solid var(--borde); padding: 12px 14px; background: #fff; transition: border-color .15s, box-shadow .15s;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--azul-2); box-shadow: 0 0 0 4px rgba(106, 61, 240, .15); }
+
+/* Botones */
+.boton {
+  border-radius: 12px; padding: 12px 20px; font-weight: 600; background: var(--degradado); border: 0;
+  box-shadow: 0 6px 16px rgba(90, 47, 214, .28); transition: transform .12s, box-shadow .12s, filter .12s;
+}
+.boton:hover { background: var(--degradado); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(90, 47, 214, .35); filter: brightness(1.05); }
+.boton:active { transform: translateY(0); }
+.boton.secundario { background: #fff; color: var(--azul-2); border: 1.5px solid var(--borde); box-shadow: none; }
+.boton.secundario:hover { background: var(--azul-claro); }
+.boton.acento { background: var(--degradado-acento); color: #fff; box-shadow: 0 6px 16px rgba(255, 107, 107, .35); }
+.boton.acento:hover { background: var(--degradado-acento); color: #fff; }
+.boton.peligro { background: linear-gradient(135deg, #e5484d, #c2253a); box-shadow: 0 6px 16px rgba(214, 51, 76, .3); }
+.boton.pequeno { padding: 7px 14px; border-radius: 10px; }
+
+/* Mensajes */
+.alerta { border-radius: 14px; border-width: 0; border-left: 5px solid; font-weight: 500; }
+
+/* Tablas */
+table { border-collapse: separate; border-spacing: 0; }
+th { background: var(--azul-claro); color: var(--azul); }
+th:first-child { border-top-left-radius: 12px; }
+th:last-child { border-top-right-radius: 12px; }
+tbody tr { transition: background .12s; }
+tbody tr:hover { background: #faf8ff; }
+.miniatura { border-radius: 10px; }
+
+/* Detalle y reportes */
+.detalle .foto-grande { border: 0; border-radius: 22px; box-shadow: var(--sombra-alta); }
+.barra-dato .pista { height: 16px; border-radius: 999px; }
+.barra-dato .relleno { background: var(--degradado); border-radius: 999px; }
+.nueva { border-left-color: var(--acento); background: #fff8f2; border-radius: 0 12px 12px 0; }
+
+/* Paginación */
+.pagination .page-link { border-radius: 10px; }
+.pagination .active .page-link { background: var(--degradado); border-color: transparent; }
+
+.pie { color: var(--gris); }
+.pie a { font-weight: 600; }
+
+/* Portada: inicio de sesión y registro */
+.acceso { background: #fff; }
+.acceso .lado {
+  background: var(--degradado); position: relative; overflow: hidden; padding: 56px 64px;
+}
+.acceso .lado::before, .acceso .lado::after { content: ""; position: absolute; border-radius: 50%; pointer-events: none; }
+.acceso .lado::before { width: 420px; height: 420px; right: -160px; top: -140px; background: rgba(255, 255, 255, .08); }
+.acceso .lado::after { width: 340px; height: 340px; left: -120px; bottom: -160px; background: rgba(255, 138, 61, .35); filter: blur(30px); }
+.acceso .lado > * { position: relative; z-index: 1; }
+.acceso .lado h1 { color: #fff; font-size: 2.8rem; line-height: 1.1; margin-bottom: 14px; }
+.acceso .lado h1 .resaltado {
+  background: var(--degradado-acento); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.acceso .lado p { color: #e6defc; font-size: 1.05rem; }
+.acceso .etiqueta-sede {
+  display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; padding: 6px 14px; border-radius: 999px;
+  background: rgba(255, 255, 255, .14); color: #fff; font-size: .8rem; font-weight: 500; margin-bottom: 18px;
+  border: 1px solid rgba(255, 255, 255, .25);
+}
+.acceso .lado ul.beneficios { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 12px; max-width: 440px; }
+.acceso .beneficios li {
+  display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 16px; color: #fff; font-weight: 500;
+  background: rgba(255, 255, 255, .10); border: 1px solid rgba(255, 255, 255, .18); backdrop-filter: blur(6px);
+}
+.acceso .beneficios .icono {
+  flex: none; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; font-size: 1.25rem;
+  background: rgba(255, 255, 255, .95); box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
+}
+.acceso .formulario { background: radial-gradient(600px 300px at 100% 0, rgba(143, 76, 240, .08), transparent 70%), #fff; }
+.acceso .formulario .tarjeta { border: 0; box-shadow: var(--sombra-alta); padding: 32px; border-radius: 24px; }
+.acceso .formulario .tarjeta h2 { font-size: 1.6rem; }
+@media (max-width: 800px) {
+  .acceso .lado { padding: 32px 22px; }
+  .acceso .lado h1 { font-size: 1.9rem; }
+  .acceso .lado ul.beneficios { display: none; }
+  .encabezado { padding: 22px; border-radius: 20px; }
+  .encabezado h1 { font-size: 1.5rem; }
+}
+@media print {
+  .encabezado { background: none; color: var(--texto); box-shadow: none; padding: 0; }
+  .encabezado h1 { color: var(--texto); }
+  .encabezado p { color: var(--gris); }
+  .encabezado::before, .encabezado::after { display: none; }
+}
+/* Los encabezados dentro de una tarjeta se quedan simples (el banner es solo para el título de la página). */
+.tarjeta .encabezado { background: none; color: inherit; box-shadow: none; padding: 0; border-radius: 0; margin-bottom: 14px; overflow: visible; align-items: flex-end; }
+.tarjeta .encabezado::before, .tarjeta .encabezado::after { display: none; }
+.tarjeta .encabezado h1, .tarjeta .encabezado h2, .tarjeta .encabezado h3 { color: var(--azul); }
+.tarjeta .encabezado p { color: var(--gris); }
+.tarjeta .encabezado a:not(.boton) { color: var(--azul-2); font-weight: 600; }
+.tarjeta .encabezado .boton.secundario { background: #fff; color: var(--azul-2); border-color: var(--borde); }
