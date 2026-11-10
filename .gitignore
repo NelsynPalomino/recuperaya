@@ -35,3 +35,4 @@ cypress/videos/
 cypress/screenshots/
 cypress/reports/
 .scannerwork/
+/coverage.xml

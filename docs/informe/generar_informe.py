@@ -422,21 +422,33 @@ for pregunta, respuesta in SONAR['preguntas']:
     p(f'**{pregunta}**')
     p(respuesta)
 
-doc.add_heading('4.4 Mejoras implementadas y segundo análisis', level=3)
+doc.add_heading('4.4 Mejoras implementadas, medición de cobertura y análisis final', level=3)
 p('Las propuestas de mejora no quedaron solo como recomendación: se implementaron en el código y se volvió a ejecutar el '
-  'análisis. Cada cambio se validó con las 67 pruebas PHPUnit y las 13 pruebas Cypress (todas aprobadas) y, en el caso del '
+  'análisis. Cada cambio se validó con las 75 pruebas PHPUnit y las 13 pruebas Cypress (todas aprobadas) y, en el caso del '
   'CSS, con una **comparación visual automática píxel a píxel** de 12 pantallas en escritorio (1366 px) y celular (375 px).')
 tabla('Mejoras implementadas a partir de SonarQube', ['Regla', 'Problema', 'Corrección aplicada', 'Archivo'], [
     r for r in SONAR['mejoras']], anchos=[2.2, 4.2, 6.4, 3.2], tam=8.5)
-tabla('Comparación de métricas: antes y después de las mejoras', ['Métrica', 'Primer análisis', 'Segundo análisis', 'Variación'],
+tabla('Comparación de métricas: antes y después de las mejoras', ['Métrica', 'Primer análisis', 'Análisis final', 'Variación'],
       SONAR['comparacion'], anchos=[4.4, 3.6, 3.6, 4.4])
 p('**Revisión (triage) de las observaciones restantes.** Como parte del proceso de calidad, cada observación que no se '
   'corrigió fue revisada y clasificada en SonarQube con un comentario que justifica la decisión:')
 tabla('Observaciones revisadas y no corregidas', ['Regla', 'Ubicación', 'Clasificación', 'Justificación'],
       SONAR['triaje'], anchos=[2.2, 3.6, 2.6, 7.6], tam=8.5)
-figura(CAP / 'terminal_sonar.png', 'Segundo análisis: ejecución de SonarScanner tras las mejoras (EXECUTION SUCCESS).')
-figura(CAP / 'sonar_resumen.png', 'Segundo análisis: Quality Gate aprobado y observaciones de mantenibilidad reducidas.')
-figura(CAP / 'sonar_issues.png', 'Segundo análisis: incidencias restantes con su clasificación.')
+p('**Medición de la cobertura de código.** Se instaló la extensión **PCOV 1.0.12** en el PHP 8.2 de XAMPP (desactivada por '
+  'defecto para no afectar a Apache; se activa solo al medir con -d pcov.enabled=1). PHPUnit genera el reporte coverage.xml '
+  '(formato Clover) y los resultados (JUnit), que SonarQube importa mediante sonar.php.coverage.reportPaths y '
+  'sonar.php.tests.reportPath. La primera medición dio 50,9 % (49,5 % en el código nuevo); con base en ella se agregaron 8 '
+  'pruebas para el código nuevo sin cubrir (tests/Feature/AdministracionYExportacionTest.php: cuentas bloqueadas y '
+  'desactivadas, CRUD de categorías y lugares, y exportaciones PDF/CSV/ML del módulo de reportes). Además, los archivos '
+  'declarativos sin lógica de negocio (config, database, routes y vistas) se excluyeron solo del cálculo de cobertura con '
+  'sonar.coverage.exclusions; siguen analizándose como código.')
+codigo('''php -d pcov.enabled=1 vendor/bin/phpunit --coverage-clover coverage.xml --log-junit docs/informe/phpunit-resultado.xml
+sonar-scanner -Dsonar.token=<token>''')
+figura(CAP / 'terminal_cobertura.png', 'Reporte de cobertura generado por PHPUnit con PCOV (79,6 % de líneas de app/).')
+figura(CAP / 'terminal_sonar.png', 'Análisis final: ejecución de SonarScanner con importación de cobertura (EXECUTION SUCCESS).')
+figura(CAP / 'sonar_resumen.png', 'Análisis final: Quality Gate PASSED, 0 problemas abiertos, cobertura 77,8 %.')
+figura(CAP / 'sonar_cobertura.png', 'Análisis final: cobertura por archivo; código nuevo con 95,8 % de cobertura.')
+figura(CAP / 'sonar_issues.png', 'Análisis final: observaciones revisadas (aceptadas y falsos positivos) con su comentario.')
 p('**Verificación visual de la refactorización del CSS:** se capturaron 12 pantallas (login, registro, privacidad, inicio, '
   'catálogo, objetos, registrar objeto, entregas, reportes, avisos, reportar pérdida y mis reclamos) en 2 tamaños, antes y '
   'después del cambio, y se compararon píxel a píxel con el script docs/informe/comparar_css.py. Resultado: **24 de 24 '
@@ -503,14 +515,15 @@ doc.add_heading('3. Evidencia del proceso de pruebas y calidad de código', leve
 p('El proceso de calidad aplicado combina tres niveles de prueba y un análisis estático, todos ejecutados desde Visual Studio Code:')
 tabla('Resumen del proceso de pruebas y calidad', ['Nivel / herramienta', 'Qué evalúa', 'Cantidad', 'Resultado'], [
     ['PHPUnit – pruebas unitarias', 'Motor de coincidencias y funciones aisladas.', '7', '100 % aprobadas'],
-    ['PHPUnit – integración (Feature)', 'Registro, acceso, objetos, reclamos, entregas, reportes.', '39', '100 % aprobadas'],
+    ['PHPUnit – integración (Feature)', 'Registro, acceso, objetos, reclamos, entregas, reportes, catálogos y exportaciones.', '47', '100 % aprobadas'],
     ['PHPUnit – caja blanca (Anexo A)', '7 caminos independientes de ReclamoService::reclamar().', '7', '100 % aprobadas'],
     ['PHPUnit – caja negra (Anexo A)', 'Particiones y valores límite del formulario de objetos.', '14', '100 % aprobadas'],
     ['Cypress – E2E', 'Aplicación real en el navegador (13 escenarios).', '13', '100 % aprobadas'],
     ['SonarQube', 'Calidad estática del código fuente (2 análisis).', f'{SONAR["lineas"]} líneas', f'Quality Gate: {SONAR["quality_gate"]}; {SONAR["resumen_mejora"]}']],
     anchos=[4.4, 6.4, 2, 3.2])
-p('**Total de pruebas automatizadas:** 67 en PHPUnit (144 aserciones) + 13 en Cypress = **80 pruebas aprobadas**.')
-figura(CAP / 'terminal_phpunit.png', 'Ejecución de php artisan test: 67 pruebas aprobadas (144 aserciones).')
+p('**Total de pruebas automatizadas:** 75 en PHPUnit (168 aserciones) + 13 en Cypress = **88 pruebas aprobadas**. '
+  '**Cobertura de código:** 79,6 % de las líneas de app/ según PHPUnit y 77,8 % según SonarQube (95,8 % en el código nuevo).')
+figura(CAP / 'terminal_phpunit.png', 'Ejecución de PHPUnit con cobertura (PCOV): 75 pruebas aprobadas (168 aserciones).')
 salto()
 
 # ============================== 4. CONCLUSIONES ==============================

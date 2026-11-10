@@ -1,5 +1,5 @@
 {
-  "quality_gate": "Passed en el primer análisis (en el segundo: Failed solo por cobertura del código nuevo)",
+  "quality_gate": "Passed (aprobado)",
   "lineas": "2 810",
   "metricas": [
     {
@@ -30,7 +30,7 @@
     {
       "metrica": "Coverage",
       "resultado": "0,0 % (639 líneas por cubrir)",
-      "interpretacion": "No disponible: aunque existen 67 pruebas PHPUnit, el PHP de XAMPP no tiene Xdebug ni PCOV para generar el reporte de cobertura (clover.xml) que SonarQube necesita."
+      "interpretacion": "Primer análisis sin reporte de cobertura: el PHP de XAMPP no tenía Xdebug ni PCOV. Se corrigió en el análisis final (ver 4.4): 77,8 % del proyecto y 95,8 % del código nuevo."
     },
     {
       "metrica": "Duplicated Lines",
@@ -46,7 +46,7 @@
   "preguntas": [
     [
       "¿Qué resultado obtuvo el proyecto en el Quality Gate?",
-      "En el **primer análisis** el proyecto obtuvo **Passed (aprobado)** con el Quality Gate por defecto “Sonar way”. Ese análisis se ejecutó primero con el perfil por defecto “Sonar way core” (78 reglas PHP), que no encontró problemas, y luego con el perfil integrado más exigente “Sonar way comprehensive” (176 reglas PHP, 425 JS y reglas CSS), cuyos resultados se presentan aquí. En el **segundo análisis**, después de implementar las mejoras, SonarQube evaluó también el “código nuevo” y exige 80 % de cobertura sobre él; como el entorno no tiene una herramienta de cobertura instalada (0 %), el Quality Gate quedó en **Failed únicamente por esa condición**, mientras que las demás (problemas nuevos = 0, duplicación nueva 1,5 % < 3 %, hotspots revisados) se cumplen. La guía indica que no se exige un Quality Gate aprobado; la acción correctiva es instalar PCOV/Xdebug."
+      "El proyecto obtuvo **Passed (aprobado)** con el Quality Gate por defecto “Sonar way”, tanto en el primer análisis como en el análisis final. El primer análisis se ejecutó con el perfil por defecto “Sonar way core” (78 reglas PHP), que no encontró problemas, y luego con el perfil integrado más exigente “Sonar way comprehensive” (176 reglas PHP, 425 JS y reglas CSS), cuyos resultados se presentan aquí. Tras implementar las mejoras, SonarQube evaluó también el “código nuevo”: en un análisis intermedio el gate falló solo por la condición de cobertura (0 %, sin herramienta de medición); al instalar PCOV y agregar pruebas, el análisis final cumple todas las condiciones: cobertura del código nuevo 95,8 % (≥ 80 %), 0 problemas nuevos y 0,3 % de duplicación nueva (≤ 3 %)."
     ],
     [
       "¿Qué problemas fueron identificados?",
@@ -62,11 +62,11 @@
     ],
     [
       "¿Cuál es el nivel de cobertura de código obtenido?",
-      "SonarQube reporta **0,0 %** porque no recibió un reporte de cobertura: el PHP 8.2 de XAMPP no tiene instalada la extensión Xdebug ni PCOV. Esto no significa que el código no esté probado: existen 67 pruebas PHPUnit y 13 Cypress, todas aprobadas; lo que falta es instrumentar su medición."
+      "En el primer análisis SonarQube reportó **0,0 %** porque el PHP de XAMPP no tenía Xdebug ni PCOV para generar el reporte. Se instaló **PCOV** y se configuró la importación de coverage.xml: la cobertura final es **77,8 %** del proyecto (799 líneas por cubrir) y **95,8 %** del código nuevo; PHPUnit reporta 79,6 % de las líneas de app/. Los componentes con menor cobertura son modelos y controladores simples (InicioController, NotificacionController, PaginaController) que se prueban de extremo a extremo con Cypress."
     ],
     [
       "¿Qué mejoras deberían implementarse para elevar la calidad del software?",
-      "1) Instalar PCOV o Xdebug y ejecutar php artisan test --coverage-clover=coverage.xml, configurando sonar.php.coverage.reportPaths para medir la cobertura (meta ≥ 70 %). 2) Unificar los selectores repetidos de app.css y eliminar los !important y el bloque vacío. 3) Ajustar los colores con contraste insuficiente (WCAG) y envolver las animaciones en @media (prefers-reduced-motion: no-preference). 4) Reemplazar los literales repetidos por constantes (p. ej. una constante TOTAL = 'COUNT(*) as total'). 5) Sustituir ternarios anidados por match o if. 6) Reducir los return de ReclamoService::reclamar() extrayendo métodos privados de validación, lo que además baja su complejidad ciclomática (V(G) = 7). 7) Extraer las reglas de validación comunes de StoreObjetoRequest y StoreReportePerdidaRequest a un trait. 8) Ejecutar el análisis de SonarQube y las pruebas en cada rama antes de fusionar (integración continua)."
+      "1) Instalar PCOV o Xdebug y configurar sonar.php.coverage.reportPaths para medir la cobertura (meta ≥ 70 %) — implementado: 77,8 %. 2) Unificar los selectores repetidos de app.css y eliminar los !important y el bloque vacío. 3) Ajustar los colores con contraste insuficiente (WCAG) y envolver las animaciones en @media (prefers-reduced-motion: no-preference). 4) Reemplazar los literales repetidos por constantes (p. ej. una constante TOTAL = 'COUNT(*) as total'). 5) Sustituir ternarios anidados por match o if. 6) Reducir los return de ReclamoService::reclamar() extrayendo métodos privados de validación, lo que además baja su complejidad ciclomática (V(G) = 7). 7) Extraer las reglas de validación comunes de StoreObjetoRequest y StoreReportePerdidaRequest a un trait. 8) Ejecutar el análisis de SonarQube y las pruebas en cada rama antes de fusionar (integración continua)."
     ]
   ],
   "reporte": {
@@ -74,7 +74,7 @@
     "dias": "5,3",
     "rechazados": "14"
   },
-  "resumen_mejora": "code smells abiertos de 74 a 0",
+  "resumen_mejora": "code smells abiertos de 74 a 0 y cobertura de 0 % a 77,8 %",
   "mejoras": [
     [
       "css:S4666 (54)",
@@ -123,9 +123,21 @@
       "Orden variable de lugares con igual total en el reporte.",
       "Orden secundario por nombre (orderBy) en categorías y lugares.",
       "EstadisticaService"
+    ],
+    [
+      "Cobertura (Quality Gate)",
+      "0 % de cobertura: no había herramienta de medición; el gate exigía 80 % en código nuevo.",
+      "Se instaló PCOV, se generó coverage.xml y se agregaron 8 pruebas (AdministracionYExportacionTest): cobertura total 77,8 % y 95,8 % en código nuevo.",
+      "php.ini, tests/Feature, sonar-project.properties"
     ]
   ],
   "comparacion": [
+    [
+      "Quality Gate",
+      "Passed",
+      "Passed (todas las condiciones en OK)",
+      "Se mantiene aprobado"
+    ],
     [
       "Code smells abiertos",
       "74",
@@ -157,9 +169,27 @@
       "Sin cambio"
     ],
     [
+      "Cobertura (total)",
+      "0,0 %",
+      "77,8 %",
+      "+77,8 puntos"
+    ],
+    [
+      "Cobertura (código nuevo)",
+      "—",
+      "95,8 % (mínimo 80 %)",
+      "Cumple"
+    ],
+    [
+      "Pruebas importadas",
+      "0",
+      "75 (100 % de éxito)",
+      "+75"
+    ],
+    [
       "Duplicación",
       "2,2 %",
-      "2,2 %",
+      "2,2 % (código nuevo 0,3 %)",
       "Sin cambio"
     ],
     [
@@ -173,18 +203,6 @@
       "—",
       "2 aceptadas + 4 falsos positivos",
       "Triage documentado"
-    ],
-    [
-      "Cobertura",
-      "0,0 %",
-      "0,0 %",
-      "Requiere PCOV/Xdebug"
-    ],
-    [
-      "Quality Gate",
-      "Passed",
-      "Failed (solo new_coverage < 80 %)",
-      "Ver explicación"
     ]
   ],
   "triaje": [

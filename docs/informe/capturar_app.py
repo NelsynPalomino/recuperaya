@@ -46,6 +46,7 @@ def sonar(pg, usuario, clave):
     for nombre, url in [('sonar_proyectos', f'{s}/projects'),
                         ('sonar_resumen', f'{s}/dashboard?id=recuperaya&codeScope=overall'),
                         ('sonar_issues', f'{s}/project/issues?id=recuperaya&issueStatuses=ACCEPTED%2CFALSE_POSITIVE'),
+                        ('sonar_cobertura', f'{s}/component_measures?id=recuperaya&metric=coverage&view=list'),
                         ('sonar_medidas', f'{s}/component_measures?id=recuperaya'),
                         ('sonar_seguridad', f'{s}/security_hotspots?id=recuperaya'),
                         ('sonar_duplicacion', f'{s}/component_measures?id=recuperaya&metric=duplicated_lines_density&view=list')]:
@@ -63,6 +64,8 @@ def sonar(pg, usuario, clave):
 with sync_playwright() as p:
     b = p.chromium.launch(channel='msedge')
     pg = b.new_page(viewport={'width': 1366, 'height': 900})
+    pg.set_default_timeout(120000)
+    pg.set_default_navigation_timeout(120000)
     if sys.argv[1] == 'app':
         app(pg)
     else:
