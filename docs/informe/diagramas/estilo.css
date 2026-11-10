@@ -1,0 +1,18 @@
+*{box-sizing:border-box;margin:0}
+body{font-family:"Segoe UI",Arial,sans-serif;background:#fff;color:#1f1640;padding:28px;width:1500px}
+h1{font-size:26px;text-align:center;color:#3b1d8f;margin-bottom:4px}
+.sub{text-align:center;color:#666;font-size:14px;margin-bottom:18px}
+.capa{border:2px solid var(--c);border-radius:14px;padding:12px 14px 14px;margin:0 0 6px;background:var(--f)}
+.capa>.t{font-weight:700;color:var(--c);font-size:16px;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.fila{display:flex;gap:10px;flex-wrap:wrap}
+.caja{flex:1;min-width:150px;background:#fff;border:1.5px solid var(--c);border-radius:10px;padding:8px 10px;font-size:13px}
+.caja b{display:block;font-size:14px;color:#1f1640;margin-bottom:3px}
+.caja small{color:#555;line-height:1.35;display:block}
+.flecha{text-align:center;color:#444;font-size:13px;margin:2px 0 6px}
+.flecha span{display:inline-block;background:#f1eef9;border-radius:20px;padding:3px 14px}
+.lado{display:flex;gap:14px}
+.lado>.principal{flex:3}.lado>.ext{flex:1;display:flex}
+.ext>.capa{flex:1}
+.ext .caja{margin-bottom:10px}
+.leyenda{font-size:12px;color:#666;margin-top:8px;text-align:center}
+.p{--c:#2563eb;--f:#eff5ff}.a{--c:#6d28d9;--f:#f5f0ff}.m{--c:#c2410c;--f:#fff6ed}.d{--c:#047857;--f:#ecfdf5}.e{--c:#9f1239;--f:#fff1f3}.q{--c:#0e7490;--f:#ecfeff}.g{--c:#4b5563;--f:#f6f7f9}

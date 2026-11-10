@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="estilo.css"></head><body>
+<h1>Diagrama de arquitectura tecnológica – RecuperaYa</h1>
+<div class="sub">Entorno de desarrollo, ejecución, pruebas y análisis de calidad</div>
+<div class="lado"><div class="principal">
+<div class="capa g"><div class="t">Entorno de desarrollo (Windows 11)</div><div class="fila">
+<div class="caja"><b>Visual Studio Code 1.144</b><small>Edición del código, terminal integrada, extensiones PHP / Blade</small></div>
+<div class="caja"><b>Git 2.55 (GitFlow)</b><small>Ramas main, develop, feature/*, fix/* · control de versiones</small></div>
+<div class="caja"><b>Composer</b><small>Dependencias PHP (Laravel, PHPUnit, Pint)</small></div>
+<div class="caja"><b>Node.js 24 + npm</b><small>Dependencias JS (Cypress, Vite)</small></div></div></div>
+<div class="flecha"><span>▼ composer install · npm install · php artisan migrate --seed · php artisan serve</span></div>
+<div class="capa a"><div class="t">Servidor de aplicación (backend y frontend)</div><div class="fila">
+<div class="caja"><b>XAMPP – Apache 2.4.58</b><small>Servidor web local (htdocs/recuperaya_laravel/public)</small></div>
+<div class="caja"><b>PHP 8.2.12</b><small>Lenguaje del backend</small></div>
+<div class="caja"><b>Laravel 12</b><small>Framework MVC: rutas, Blade, Eloquent, validación, autenticación, Gates</small></div>
+<div class="caja"><b>Frontend</b><small>HTML5 + Blade, CSS3 propio (responsivo), JavaScript</small></div></div></div>
+<div class="flecha"><span>▼ PDO (pdo_mysql / pdo_sqlite)</span></div>
+<div class="capa d"><div class="t">Datos</div><div class="fila">
+<div class="caja"><b>MariaDB 10.4 (MySQL)</b><small>Base principal recuperaya_laravel (phpMyAdmin) y base de pruebas E2E recuperaya_cypress</small></div>
+<div class="caja"><b>SQLite</b><small>Base en memoria (:memory:) para las pruebas PHPUnit</small></div>
+<div class="caja"><b>Sistema de archivos</b><small>Fotos de objetos en storage/app/public</small></div></div></div>
+<div class="flecha"><span>▼ despliegue</span></div>
+<div class="capa g"><div class="t">Infraestructura de despliegue</div><div class="fila">
+<div class="caja"><b>Local (XAMPP)</b><small>http://127.0.0.1:8000 – desarrollo y demostración</small></div>
+<div class="caja"><b>Docker Compose</b><small>Dockerfile + docker-compose.yml: app PHP/Apache :8080, MySQL 8.0, phpMyAdmin :8081</small></div></div></div>
+</div>
+<div class="ext"><div class="capa q"><div class="t">Pruebas y calidad</div>
+<div class="caja"><b>PHPUnit 11</b><small>67 pruebas: unitarias, integración, caja blanca y caja negra (tests/Unit, tests/Feature)</small></div>
+<div class="caja"><b>Cypress 13.17</b><small>13 escenarios E2E sobre la aplicación en ejecución (cypress/e2e), con capturas y videos</small></div>
+<div class="caja"><b>Playwright + Edge</b><small>12 pruebas E2E anteriores (tests/E2E)</small></div>
+<div class="caja"><b>SonarQube Community 26.11</b><small>Servidor local http://localhost:9000: Quality Gate, bugs, vulnerabilidades, code smells, duplicación</small></div>
+<div class="caja"><b>SonarScanner CLI 8.4</b><small>Envía el código (sonar-project.properties) a SonarQube</small></div>
+<div class="caja"><b>Laravel Pint</b><small>Estilo de código PHP</small></div>
+</div></div></div>
+<div class="leyenda">Elaboración propia. Versiones verificadas en el equipo de desarrollo el 09/11/2026.</div>
+</body></html>

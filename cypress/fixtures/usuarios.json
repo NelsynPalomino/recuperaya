@@ -1,0 +1,5 @@
+{
+    "admin": { "email": "admin@continental.edu.pe", "password": "Admin2026*" },
+    "encargado": { "email": "encargado@continental.edu.pe", "password": "Encargado2026*" },
+    "estudiante": { "email": "72345678@continental.edu.pe", "password": "Usuario2026*" }
+}

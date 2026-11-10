@@ -1,0 +1,45 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="estilo.css"></head><body>
+<h1>Diagrama de arquitectura de software – RecuperaYa</h1>
+<div class="sub">Aplicación web monolítica cliente-servidor en 3 capas con patrón MVC (Laravel 12)</div>
+<div class="lado"><div class="principal">
+<div class="capa g"><div class="t">Usuarios (cliente)</div><div class="fila">
+<div class="caja"><b>Estudiante / docente / personal</b><small>Busca en el catálogo, reporta pérdidas y reclama objetos.</small></div>
+<div class="caja"><b>Encargado de custodia</b><small>Registra objetos, verifica y registra entregas, consulta reportes.</small></div>
+<div class="caja"><b>Administrador</b><small>Usuarios, roles, categorías, lugares y datos para ML.</small></div>
+<div class="caja"><b>Navegador web</b><small>Chrome / Edge / celular (diseño responsivo, sin instalación).</small></div></div></div>
+<div class="flecha"><span>▼ HTTP: peticiones GET/POST/PUT/DELETE · formularios con token CSRF · cookie de sesión &nbsp;&nbsp;▲ HTML renderizado</span></div>
+<div class="capa p"><div class="t">Capa de presentación (vistas)</div><div class="fila">
+<div class="caja"><b>Plantillas Blade</b><small>layouts/app, layouts/acceso, partials (mensajes, errores, tarjeta de objeto)</small></div>
+<div class="caja"><b>Vistas por módulo</b><small>auth, catalogo, objetos, reportes, reclamos, entregas, estadisticas, notificaciones, admin</small></div>
+<div class="caja"><b>Recursos estáticos</b><small>public/css/app.css, JavaScript, íconos SVG, Google Fonts (Poppins)</small></div></div></div>
+<div class="flecha"><span>▼ datos para la vista ($objetos, $r, $errors) &nbsp;&nbsp;▲ entrada del usuario</span></div>
+<div class="capa a"><div class="t">Capa de aplicación / lógica de negocio (Laravel 12 – MVC)</div>
+<div class="fila" style="margin-bottom:8px">
+<div class="caja"><b>Rutas (routes/web.php)</b><small>Route::resource con verbos en español (/objetos/crear, /editar) y URLs amigables por slug</small></div>
+<div class="caja"><b>Middleware y Gates</b><small>guest, auth, can:reportar · can:gestionar · can:administrar (control por rol), CSRF, bloqueo tras 5 intentos fallidos</small></div>
+<div class="caja"><b>Form Requests (validación)</b><small>RegistroRequest, LoginRequest, StoreObjetoRequest, UpdateObjetoRequest, StoreReclamoRequest…</small></div></div>
+<div class="fila" style="margin-bottom:8px">
+<div class="caja"><b>Controladores</b><small>Auth, Catalogo, Objeto, ReportePerdida, Reclamo, Entrega, Estadistica, Notificacion, Admin\Usuario / Categoria / Lugar</small></div>
+<div class="caja"><b>Servicios</b><small>MotorCoincidencias (puntaje 0-100) · ReclamoService (verificación) · EstadisticaService (indicadores, CSV, dataset ML) · Notificador · ImagenService · Texto</small></div>
+<div class="caja"><b>Modelos Eloquent (ORM)</b><small>User, Objeto, Categoria, Lugar, ReportePerdida, Coincidencia, Reclamo, Entrega, Notificacion, Auditoria</small></div></div>
+<div class="capa m" style="margin:0"><div class="t">Módulos funcionales</div><div class="fila">
+<div class="caja"><b>M1 Acceso y usuarios</b><small>Registro con correo institucional, login, roles</small></div>
+<div class="caja"><b>M2 Registro y custodia</b><small>CRUD de objetos con foto y preguntas</small></div>
+<div class="caja"><b>M3 Búsqueda y pérdidas</b><small>Catálogo con filtros y reportes de pérdida</small></div>
+<div class="caja"><b>M4 Coincidencias y avisos</b><small>Cruce automático y notificaciones</small></div>
+<div class="caja"><b>M5 Reclamo y entrega</b><small>Preguntas de verificación, carné, entrega</small></div>
+<div class="caja"><b>M6 Reportes y análisis</b><small>Indicadores, filtros, PDF, CSV, ML</small></div></div></div>
+</div>
+<div class="flecha"><span>▼ consultas SQL generadas por Eloquent / Query Builder (PDO) &nbsp;&nbsp;▲ registros</span></div>
+<div class="capa d"><div class="t">Capa de datos</div><div class="fila">
+<div class="caja" style="flex:3"><b>Base de datos MySQL / MariaDB – recuperaya_laravel</b><small>users · categorias · lugares · objetos · reportes_perdida · coincidencias · reclamos · entregas · notificaciones · auditorias · sessions · cache · jobs (creadas con migraciones de Laravel)</small></div>
+<div class="caja"><b>Almacenamiento de archivos</b><small>storage/app/public: fotos de los objetos (JPG/PNG, máx. 5 MB)</small></div></div></div>
+</div>
+<div class="ext"><div class="capa e"><div class="t">Servicios externos</div>
+<div class="caja"><b>Servidor de correo (SMTP)</b><small><u>Funcionalidad:</u> enviar avisos de coincidencias y reclamos.<br><u>Datos:</u> destinatario, asunto, mensaje y enlace.<br><u>Integración:</u> Laravel Mail (MAIL_MAILER); en desarrollo usa el driver <i>log</i>.</small></div>
+<div class="caja"><b>Google Fonts (CDN)</b><small><u>Funcionalidad:</u> tipografía Poppins de la interfaz.<br><u>Datos:</u> hoja de estilos (solo lectura).</small></div>
+<div class="caja"><b>Google Colab</b><small><u>Funcionalidad:</u> modelo de machine learning (pandas, scikit-learn).<br><u>Datos:</u> dataset CSV anónimo exportado por el administrador (variable recuperado_30d).</small></div>
+<div class="caja"><b>Sin APIs de pago ni de geolocalización</b><small>El servicio es interno y gratuito; los lugares del campus son una lista configurable.</small></div>
+</div></div></div>
+<div class="leyenda">Elaboración propia a partir del código fuente del proyecto.</div>
+</body></html>

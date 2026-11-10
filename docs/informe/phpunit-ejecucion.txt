@@ -1,0 +1,178 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.2.12
+Configuration: C:\xampp\htdocs\recuperaya_laravel\phpunit.xml
+
+
+  [30;42;1m PASS [39;49;22m[39m Tests\Unit\ExampleTest[39m
+  [32;1m✓[39;22m[90m [39m[90mthat true is true[39m[90m                                                                                           [39m [90m0.02s[39m  
+
+  [30;42;1m PASS [39;49;22m[39m Tests\Unit\MotorCoincidenciasTest[39m
+  [32;1m✓[39;22m[90m [39m[90mcp23 coincidencia total suma 100 puntos[39m[90m                                                                     [39m [90m0.01s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp24 categoria diferente da cero[39m
+  [32;1m✓[39;22m[90m [39m[90mcp25 objeto encontrado dos dias antes de la perdida da cero[39m
+  [32;1m✓[39;22m[90m [39m[90mcp26 valor limite 31 dias despues da cero[39m
+  [32;1m✓[39;22m[90m [39m[90mcp27 valor limite 30 dias despues si puntua[39m
+  [32;1m✓[39;22m[90m [39m[90mcp28 lugar distinto queda justo en el umbral[39m
+  [32;1m✓[39;22m[90m [39m[90mcp29 reporte sin lugar puede coincidir[39m[90m                                                                      [39m [90m0.01s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp30 color parecido ignora tildes y mayusculas[39m
+  [32;1m✓[39;22m[90m [39m[90mcp32 normaliza respuestas sin tildes ni espacios[39m
+
+  [30;42;1m PASS [39;49;22m[39m Tests\Feature\CajaBlancaReclamoTest[39m
+  [32;1m✓[39;22m[90m [39m[90mcb01 camino 1 objeto no disponible[39m[90m                                                                          [39m [90m0.77s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcb02 camino 2 reclamo previo rechazado[39m[90m                                                                      [39m [90m0.19s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcb03 camino 3 reclamo previo aprobado[39m[90m                                                                       [39m [90m0.19s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcb04 camino 4 sin reclamo previo y respuestas correctas[39m[90m                                                     [39m [90m0.44s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcb05 camino 5 respuesta incorrecta con intentos restantes[39m[90m                                                   [39m [90m0.25s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcb06 camino 6 respuesta incorrecta agota los intentos[39m[90m                                                       [39m [90m0.27s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcb07 camino 7 reclamo pendiente existente y respuestas correctas[39m[90m                                            [39m [90m0.34s[39m  
+
+  [30;42;1m PASS [39;49;22m[39m Tests\Feature\CajaNegraObjetoTest[39m
+  [32;1m✓[39;22m[90m [39m[90mparticiones y valores limite with data set " c n-01 descripción 9 caracteres (límite inferior - 1)"[39m[90m         [39m [90m0.20s[39m  
+  [32;1m✓[39;22m[90m [39m[90mparticiones y valores limite with data set " c n-02 descripción 10 caracteres (límite inferior)"[39m[90m            [39m [90m0.27s[39m  
+  [32;1m✓[39;22m[90m [39m[90mparticiones y valores limite with data set " c n-03 descripción 500 caracteres (límite superior)"[39m[90m           [39m [90m0.25s[39m  
+  [32;1m✓[39;22m[90m [39m[90mparticiones y valores limite with data set " c n-04 descripción 501 caracteres (límite superior + 1)"[39m[90m       [39m [90m0.05s[39m  
+  [32;1m✓[39;22m[90m [39m[90mparticiones y valores limite with data set " c n-05 color con números (clase inválida)"[39m[90m                     [39m [90m0.06s[39m  
+  [32;1m✓[39;22m[90m [39m[90mparticiones y valores limite with data set " c n-06 color de 2 letras (límite inferior - 1)"[39m[90m                [39m [90m0.04s[39m  
+  [32;1m✓[39;22m[90m [39m[90mparticiones y valores limite with data set " c n-07 color compuesto válido"[39m[90m                                 [39m [90m0.25s[39m  
+  [32;1m✓[39;22m[90m [39m[90mparticiones y valores limite with data set " c n-08 fecha de hallazgo hoy (límite)"[39m[90m                         [39m [90m0.25s[39m  
+  [32;1m✓[39;22m[90m [39m[90mparticiones y valores limite with data set " c n-09 fecha de hallazgo mañana (futura)"[39m[90m                      [39m [90m0.06s[39m  
+  [32;1m✓[39;22m[90m [39m[90mparticiones y valores limite with data set " c n-10 fecha con más de un año de antigüedad"[39m[90m                  [39m [90m0.06s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcn11 foto de 199 px es rechazada[39m[90m                                                                            [39m [90m0.04s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcn12 foto de 200 px es aceptada[39m[90m                                                                             [39m [90m0.21s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcn13 foto mayor a 5 mb es rechazada[39m[90m                                                                         [39m [90m0.06s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcn14 archivo pdf es rechazado[39m[90m                                                                               [39m [90m0.07s[39m  
+
+  [30;42;1m PASS [39;49;22m[39m Tests\Feature\ObjetoTest[39m
+  [32;1m✓[39;22m[90m [39m[90mcp12 registro valido crea objeto con codigo slug y foto[39m[90m                                                     [39m [90m0.30s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp13 fecha futura es rechazada[39m[90m                                                                              [39m [90m0.05s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp14 descripcion de 9 caracteres es rechazada[39m[90m                                                               [39m [90m0.05s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp17 preguntas iguales son rechazadas[39m[90m                                                                       [39m [90m0.04s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp19 foto obligatoria[39m[90m                                                                                       [39m [90m0.04s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp20 archivo que no es imagen es rechazado[39m[90m                                                                  [39m [90m0.05s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp21 foto mayor a 5 mb es rechazada[39m[90m                                                                         [39m [90m0.08s[39m  
+  [32;1m✓[39;22m[90m [39m[90masignacion masiva ignora el estado enviado en el formulario[39m[90m                                                 [39m [90m0.25s[39m  
+  [32;1m✓[39;22m[90m [39m[90murl amigable muestra el objeto por su slug[39m[90m                                                                  [39m [90m0.30s[39m  
+  [32;1m✓[39;22m[90m [39m[90mactualizar objeto con asignacion masiva[39m[90m                                                                     [39m [90m0.21s[39m  
+  [32;1m✓[39;22m[90m [39m[90meliminar objeto sin reclamos[39m[90m                                                                                [39m [90m0.21s[39m  
+  [32;1m✓[39;22m[90m [39m[90mno se elimina un objeto con reclamos[39m[90m                                                                        [39m [90m0.21s[39m  
+
+  [30;42;1m PASS [39;49;22m[39m Tests\Feature\ReclamoYEntregaTest[39m
+  [32;1m✓[39;22m[90m [39m[90mcp31 reporte de perdida genera coincidencia y aviso[39m[90m                                                         [39m [90m0.37s[39m  
+  [32;1m✓[39;22m[90m [39m[90mreporte con fecha futura es rechazado[39m[90m                                                                       [39m [90m0.34s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp33 cp34 dos intentos fallidos rechazan el reclamo[39m[90m                                                         [39m [90m0.50s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp35 no se permite un tercer intento[39m[90m                                                                        [39m [90m0.52s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp36 respuestas correctas aprueban el reclamo[39m[90m                                                               [39m [90m0.51s[39m  
+  [32;1m✓[39;22m[90m [39m[90mreclamo con respuestas vacias es rechazado por el form request[39m[90m                                              [39m [90m0.34s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp38 no se entrega sin verificar el carne[39m[90m                                                                   [39m [90m0.50s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp39 codigo de carne invalido es rechazado[39m[90m                                                                  [39m [90m0.51s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp40 entrega valida marca el objeto como devuelto[39m[90m                                                           [39m [90m0.58s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp41 no se entrega dos veces[39m[90m                                                                                [39m [90m0.55s[39m  
+
+  [30;42;1m PASS [39;49;22m[39m Tests\Feature\RegistroYAccesoTest[39m
+  [32;1m✓[39;22m[90m [39m[90mcp01 registro valido crea usuario con rol usuario[39m[90m                                                           [39m [90m0.06s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp03 correo de otro dominio es rechazado[39m[90m                                                                    [39m [90m0.04s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp07 contrasena de 7 caracteres es rechazada[39m[90m                                                                [39m [90m0.04s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp09 contrasena sin numeros es rechazada[39m[90m                                                                    [39m [90m0.04s[39m  
+  [32;1m✓[39;22m[90m [39m[90mregistro sin aceptar privacidad es rechazado[39m[90m                                                                [39m [90m0.04s[39m  
+  [32;1m✓[39;22m[90m [39m[90masignacion masiva no permite registrarse como administrador[39m[90m                                                 [39m [90m0.04s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp11 cuenta se bloquea despues de 5 intentos fallidos[39m[90m                                                       [39m [90m0.05s[39m  
+  [32;1m✓[39;22m[90m [39m[90musuario comun no puede entrar a gestion de objetos[39m[90m                                                          [39m [90m0.04s[39m  
+  [32;1m✓[39;22m[90m [39m[90mroute resource usa verbos en espanol[39m[90m                                                                        [39m [90m0.02s[39m  
+
+  [30;42;1m PASS [39;49;22m[39m Tests\Feature\ReporteEstadisticoTest[39m
+  [32;1m✓[39;22m[90m [39m[90mcp46 indicadores se calculan desde los registros[39m[90m                                                            [39m [90m1.01s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp47 filtro por categoria[39m[90m                                                                                   [39m [90m1.02s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp48 filtro por estado[39m[90m                                                                                      [39m [90m0.96s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp49 estado invalido es rechazado en la pantalla[39m[90m                                                            [39m [90m0.97s[39m  
+  [32;1m✓[39;22m[90m [39m[90mcp50 pantalla de reportes muestra indicadores filtrados[39m[90m                                                     [39m [90m0.97s[39m  
+
+  [90mTests:[39m    [32;1m67 passed[39;22m[90m (144 assertions)[39m
+  [90mDuration:[39m [39m16.99s[39m
+
+Time: 00:16.273, Memory: 54.00 MB
+
+[4mCaja Blanca Reclamo (Tests\Feature\CajaBlancaReclamo)[0m
+[32m ✔ [0mCb01 camino 1 objeto no disponible
+[32m ✔ [0mCb02 camino 2 reclamo previo rechazado
+[32m ✔ [0mCb03 camino 3 reclamo previo aprobado
+[32m ✔ [0mCb04 camino 4 sin reclamo previo y respuestas correctas
+[32m ✔ [0mCb05 camino 5 respuesta incorrecta con intentos restantes
+[32m ✔ [0mCb06 camino 6 respuesta incorrecta agota los intentos
+[32m ✔ [0mCb07 camino 7 reclamo pendiente existente y respuestas correctas
+
+[4mCaja Negra Objeto (Tests\Feature\CajaNegraObjeto)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-01[2m·[22mdescripción[2m·[22m9[2m·[22mcaracteres[2m·[22m(límite[2m·[22minferior[2m·[22m-[2m·[22m1)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-02[2m·[22mdescripción[2m·[22m10[2m·[22mcaracteres[2m·[22m(límite[2m·[22minferior)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-03[2m·[22mdescripción[2m·[22m500[2m·[22mcaracteres[2m·[22m(límite[2m·[22msuperior)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-04[2m·[22mdescripción[2m·[22m501[2m·[22mcaracteres[2m·[22m(límite[2m·[22msuperior[2m·[22m+[2m·[22m1)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-05[2m·[22mcolor[2m·[22mcon[2m·[22mnúmeros[2m·[22m(clase[2m·[22minválida)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-06[2m·[22mcolor[2m·[22mde[2m·[22m2[2m·[22mletras[2m·[22m(límite[2m·[22minferior[2m·[22m-[2m·[22m1)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-07[2m·[22mcolor[2m·[22mcompuesto[2m·[22mválido[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-08[2m·[22mfecha[2m·[22mde[2m·[22mhallazgo[2m·[22mhoy[2m·[22m(límite)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-09[2m·[22mfecha[2m·[22mde[2m·[22mhallazgo[2m·[22mmañana[2m·[22m(futura)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-10[2m·[22mfecha[2m·[22mcon[2m·[22mmás[2m·[22mde[2m·[22mun[2m·[22maño[2m·[22mde[2m·[22mantigüedad[0m
+[32m ✔ [0mCn11 foto de 199 px es rechazada
+[32m ✔ [0mCn12 foto de 200 px es aceptada
+[32m ✔ [0mCn13 foto mayor a 5 mb es rechazada
+[32m ✔ [0mCn14 archivo pdf es rechazado
+
+[4mExample (Tests\Unit\Example)[0m
+[32m ✔ [0mThat true is true
+
+[4mMotor Coincidencias (Tests\Unit\MotorCoincidencias)[0m
+[32m ✔ [0mCp23 coincidencia total suma 100 puntos
+[32m ✔ [0mCp24 categoria diferente da cero
+[32m ✔ [0mCp25 objeto encontrado dos dias antes de la perdida da cero
+[32m ✔ [0mCp26 valor limite 31 dias despues da cero
+[32m ✔ [0mCp27 valor limite 30 dias despues si puntua
+[32m ✔ [0mCp28 lugar distinto queda justo en el umbral
+[32m ✔ [0mCp29 reporte sin lugar puede coincidir
+[32m ✔ [0mCp30 color parecido ignora tildes y mayusculas
+[32m ✔ [0mCp32 normaliza respuestas sin tildes ni espacios
+
+[4mObjeto (Tests\Feature\Objeto)[0m
+[32m ✔ [0mCp12 registro valido crea objeto con codigo slug y foto
+[32m ✔ [0mCp13 fecha futura es rechazada
+[32m ✔ [0mCp14 descripcion de 9 caracteres es rechazada
+[32m ✔ [0mCp17 preguntas iguales son rechazadas
+[32m ✔ [0mCp19 foto obligatoria
+[32m ✔ [0mCp20 archivo que no es imagen es rechazado
+[32m ✔ [0mCp21 foto mayor a 5 mb es rechazada
+[32m ✔ [0mAsignacion masiva ignora el estado enviado en el formulario
+[32m ✔ [0mUrl amigable muestra el objeto por su slug
+[32m ✔ [0mActualizar objeto con asignacion masiva
+[32m ✔ [0mEliminar objeto sin reclamos
+[32m ✔ [0mNo se elimina un objeto con reclamos
+
+[4mReclamo YEntrega (Tests\Feature\ReclamoYEntrega)[0m
+[32m ✔ [0mCp31 reporte de perdida genera coincidencia y aviso
+[32m ✔ [0mReporte con fecha futura es rechazado
+[32m ✔ [0mCp33 cp34 dos intentos fallidos rechazan el reclamo
+[32m ✔ [0mCp35 no se permite un tercer intento
+[32m ✔ [0mCp36 respuestas correctas aprueban el reclamo
+[32m ✔ [0mReclamo con respuestas vacias es rechazado por el form request
+[32m ✔ [0mCp38 no se entrega sin verificar el carne
+[32m ✔ [0mCp39 codigo de carne invalido es rechazado
+[32m ✔ [0mCp40 entrega valida marca el objeto como devuelto
+[32m ✔ [0mCp41 no se entrega dos veces
+
+[4mRegistro YAcceso (Tests\Feature\RegistroYAcceso)[0m
+[32m ✔ [0mCp01 registro valido crea usuario con rol usuario
+[32m ✔ [0mCp03 correo de otro dominio es rechazado
+[32m ✔ [0mCp07 contrasena de 7 caracteres es rechazada
+[32m ✔ [0mCp09 contrasena sin numeros es rechazada
+[32m ✔ [0mRegistro sin aceptar privacidad es rechazado
+[32m ✔ [0mAsignacion masiva no permite registrarse como administrador
+[32m ✔ [0mCp11 cuenta se bloquea despues de 5 intentos fallidos
+[32m ✔ [0mUsuario comun no puede entrar a gestion de objetos
+[32m ✔ [0mRoute resource usa verbos en espanol
+
+[4mReporte Estadistico (Tests\Feature\ReporteEstadistico)[0m
+[32m ✔ [0mCp46 indicadores se calculan desde los registros
+[32m ✔ [0mCp47 filtro por categoria
+[32m ✔ [0mCp48 filtro por estado
+[32m ✔ [0mCp49 estado invalido es rechazado en la pantalla
+[32m ✔ [0mCp50 pantalla de reportes muestra indicadores filtrados
+
+[30;42mOK (67 tests, 144 assertions)[0m
