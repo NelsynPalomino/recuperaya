@@ -26,7 +26,7 @@ class CategoriaController extends Controller
     {
         $item = Categoria::create($request->validated());   // asignación masiva con $guarded = []
         Auditoria::registrar('crear_categoria', $item->nombre);
-        return redirect()->route('categorias.index')->with('exito', 'Categoría "' . $item->nombre . '" creado(a).');
+        return redirect()->route('categorias.index')->with('exito', $this->mensaje($item->nombre, 'creado'));
     }
 
     public function edit(Categoria $categoria)
@@ -37,7 +37,7 @@ class CategoriaController extends Controller
     public function update(StoreCatalogoRequest $request, Categoria $categoria)
     {
         $categoria->update($request->validated());
-        return redirect()->route('categorias.index')->with('exito', 'Categoría "' . $categoria->nombre . '" actualizado(a).');
+        return redirect()->route('categorias.index')->with('exito', $this->mensaje($categoria->nombre, 'actualizado'));
     }
 
     /** Eliminar registro: solo si no está en uso; si está en uso, se sugiere desactivarlo. */
@@ -50,6 +50,12 @@ class CategoriaController extends Controller
         $nombre = $categoria->nombre;
         $categoria->delete();
         Auditoria::registrar('eliminar_categoria', $nombre);
-        return redirect()->route('categorias.index')->with('exito', 'Categoría "' . $nombre . '" eliminado(a).');
+        return redirect()->route('categorias.index')->with('exito', $this->mensaje($nombre, 'eliminado'));
+    }
+
+    /** Mensaje de confirmación de las acciones del CRUD. */
+    private function mensaje(string $nombre, string $accion): string
+    {
+        return sprintf('Categoría "%s" %s(a).', $nombre, $accion);
     }
 }

@@ -1,0 +1,106 @@
+PHPUnit 11.5.57 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 8.2.12 with PCOV 1.0.12
+Configuration: C:\xampp\htdocs\recuperaya_laravel\phpunit.xml
+
+................................................................. 65 / 75 ( 86%)
+..........                                                        75 / 75 (100%)
+
+Time: 00:18.336, Memory: 58.00 MB
+
+[4mAdministracion YExportacion (Tests\Feature\AdministracionYExportacion)[0m
+[32m ✔ [0mCp51 cuenta bloqueada no puede ingresar
+[32m ✔ [0mCp52 cuenta desactivada no puede ingresar
+[32m ✔ [0mCp53 crud de categorias
+[32m ✔ [0mCp54 crud de lugares
+[32m ✔ [0mCp55 categoria en uso no se elimina
+[32m ✔ [0mCp56 vista imprimible respeta los filtros
+[32m ✔ [0mCp57 exportacion csv con filtros
+[32m ✔ [0mCp58 dataset de machine learning
+
+[4mCaja Blanca Reclamo (Tests\Feature\CajaBlancaReclamo)[0m
+[32m ✔ [0mCb01 camino 1 objeto no disponible
+[32m ✔ [0mCb02 camino 2 reclamo previo rechazado
+[32m ✔ [0mCb03 camino 3 reclamo previo aprobado
+[32m ✔ [0mCb04 camino 4 sin reclamo previo y respuestas correctas
+[32m ✔ [0mCb05 camino 5 respuesta incorrecta con intentos restantes
+[32m ✔ [0mCb06 camino 6 respuesta incorrecta agota los intentos
+[32m ✔ [0mCb07 camino 7 reclamo pendiente existente y respuestas correctas
+
+[4mCaja Negra Objeto (Tests\Feature\CajaNegraObjeto)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-01[2m·[22mdescripción[2m·[22m9[2m·[22mcaracteres[2m·[22m(límite[2m·[22minferior[2m·[22m-[2m·[22m1)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-02[2m·[22mdescripción[2m·[22m10[2m·[22mcaracteres[2m·[22m(límite[2m·[22minferior)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-03[2m·[22mdescripción[2m·[22m500[2m·[22mcaracteres[2m·[22m(límite[2m·[22msuperior)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-04[2m·[22mdescripción[2m·[22m501[2m·[22mcaracteres[2m·[22m(límite[2m·[22msuperior[2m·[22m+[2m·[22m1)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-05[2m·[22mcolor[2m·[22mcon[2m·[22mnúmeros[2m·[22m(clase[2m·[22minválida)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-06[2m·[22mcolor[2m·[22mde[2m·[22m2[2m·[22mletras[2m·[22m(límite[2m·[22minferior[2m·[22m-[2m·[22m1)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-07[2m·[22mcolor[2m·[22mcompuesto[2m·[22mválido[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-08[2m·[22mfecha[2m·[22mde[2m·[22mhallazgo[2m·[22mhoy[2m·[22m(límite)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-09[2m·[22mfecha[2m·[22mde[2m·[22mhallazgo[2m·[22mmañana[2m·[22m(futura)[0m
+[32m ✔ [0mParticiones y valores limite[2m with [22m[36mCN-10[2m·[22mfecha[2m·[22mcon[2m·[22mmás[2m·[22mde[2m·[22mun[2m·[22maño[2m·[22mde[2m·[22mantigüedad[0m
+[32m ✔ [0mCn11 foto de 199 px es rechazada
+[32m ✔ [0mCn12 foto de 200 px es aceptada
+[32m ✔ [0mCn13 foto mayor a 5 mb es rechazada
+[32m ✔ [0mCn14 archivo pdf es rechazado
+
+[4mExample (Tests\Unit\Example)[0m
+[32m ✔ [0mThat true is true
+
+[4mMotor Coincidencias (Tests\Unit\MotorCoincidencias)[0m
+[32m ✔ [0mCp23 coincidencia total suma 100 puntos
+[32m ✔ [0mCp24 categoria diferente da cero
+[32m ✔ [0mCp25 objeto encontrado dos dias antes de la perdida da cero
+[32m ✔ [0mCp26 valor limite 31 dias despues da cero
+[32m ✔ [0mCp27 valor limite 30 dias despues si puntua
+[32m ✔ [0mCp28 lugar distinto queda justo en el umbral
+[32m ✔ [0mCp29 reporte sin lugar puede coincidir
+[32m ✔ [0mCp30 color parecido ignora tildes y mayusculas
+[32m ✔ [0mCp32 normaliza respuestas sin tildes ni espacios
+
+[4mObjeto (Tests\Feature\Objeto)[0m
+[32m ✔ [0mCp12 registro valido crea objeto con codigo slug y foto
+[32m ✔ [0mCp13 fecha futura es rechazada
+[32m ✔ [0mCp14 descripcion de 9 caracteres es rechazada
+[32m ✔ [0mCp17 preguntas iguales son rechazadas
+[32m ✔ [0mCp19 foto obligatoria
+[32m ✔ [0mCp20 archivo que no es imagen es rechazado
+[32m ✔ [0mCp21 foto mayor a 5 mb es rechazada
+[32m ✔ [0mAsignacion masiva ignora el estado enviado en el formulario
+[32m ✔ [0mUrl amigable muestra el objeto por su slug
+[32m ✔ [0mActualizar objeto con asignacion masiva
+[32m ✔ [0mEliminar objeto sin reclamos
+[32m ✔ [0mNo se elimina un objeto con reclamos
+
+[4mReclamo YEntrega (Tests\Feature\ReclamoYEntrega)[0m
+[32m ✔ [0mCp31 reporte de perdida genera coincidencia y aviso
+[32m ✔ [0mReporte con fecha futura es rechazado
+[32m ✔ [0mCp33 cp34 dos intentos fallidos rechazan el reclamo
+[32m ✔ [0mCp35 no se permite un tercer intento
+[32m ✔ [0mCp36 respuestas correctas aprueban el reclamo
+[32m ✔ [0mReclamo con respuestas vacias es rechazado por el form request
+[32m ✔ [0mCp38 no se entrega sin verificar el carne
+[32m ✔ [0mCp39 codigo de carne invalido es rechazado
+[32m ✔ [0mCp40 entrega valida marca el objeto como devuelto
+[32m ✔ [0mCp41 no se entrega dos veces
+
+[4mRegistro YAcceso (Tests\Feature\RegistroYAcceso)[0m
+[32m ✔ [0mCp01 registro valido crea usuario con rol usuario
+[32m ✔ [0mCp03 correo de otro dominio es rechazado
+[32m ✔ [0mCp07 contrasena de 7 caracteres es rechazada
+[32m ✔ [0mCp09 contrasena sin numeros es rechazada
+[32m ✔ [0mRegistro sin aceptar privacidad es rechazado
+[32m ✔ [0mAsignacion masiva no permite registrarse como administrador
+[32m ✔ [0mCp11 cuenta se bloquea despues de 5 intentos fallidos
+[32m ✔ [0mUsuario comun no puede entrar a gestion de objetos
+[32m ✔ [0mRoute resource usa verbos en espanol
+
+[4mReporte Estadistico (Tests\Feature\ReporteEstadistico)[0m
+[32m ✔ [0mCp46 indicadores se calculan desde los registros
+[32m ✔ [0mCp47 filtro por categoria
+[32m ✔ [0mCp48 filtro por estado
+[32m ✔ [0mCp49 estado invalido es rechazado en la pantalla
+[32m ✔ [0mCp50 pantalla de reportes muestra indicadores filtrados
+
+[30;42mOK (75 tests, 168 assertions)[0m
+
+Generating code coverage report in Clover XML format ... done [00:00.052]

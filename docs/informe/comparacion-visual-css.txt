@@ -1,0 +1,25 @@
+1366_encargado_avisos.png                                0.000 % de píxeles distintos
+1366_encargado_catalogo.png                              0.000 % de píxeles distintos
+1366_encargado_entregas.png                              0.000 % de píxeles distintos
+1366_encargado_inicio.png                                0.000 % de píxeles distintos
+1366_encargado_objetos.png                               0.000 % de píxeles distintos
+1366_encargado_objetos_crear.png                         0.000 % de píxeles distintos
+1366_encargado_reportes-estadisticos.png                 0.000 % de píxeles distintos
+1366_estudiante_mis-reclamos.png                         0.000 % de píxeles distintos
+1366_estudiante_reportes_crear.png                       0.000 % de píxeles distintos
+1366_publico_login.png                                   0.000 % de píxeles distintos
+1366_publico_privacidad.png                              0.000 % de píxeles distintos
+1366_publico_registro.png                                0.000 % de píxeles distintos
+375_encargado_avisos.png                                 0.000 % de píxeles distintos
+375_encargado_catalogo.png                               0.000 % de píxeles distintos
+375_encargado_entregas.png                               0.000 % de píxeles distintos
+375_encargado_inicio.png                                 0.000 % de píxeles distintos
+375_encargado_objetos.png                                0.000 % de píxeles distintos
+375_encargado_objetos_crear.png                          0.000 % de píxeles distintos
+375_encargado_reportes-estadisticos.png                  0.000 % de píxeles distintos
+375_estudiante_mis-reclamos.png                          0.000 % de píxeles distintos
+375_estudiante_reportes_crear.png                        0.000 % de píxeles distintos
+375_publico_login.png                                    0.000 % de píxeles distintos
+375_publico_privacidad.png                               0.000 % de píxeles distintos
+375_publico_registro.png                                 0.000 % de píxeles distintos
+MÁXIMA DIFERENCIA: 0.000 %

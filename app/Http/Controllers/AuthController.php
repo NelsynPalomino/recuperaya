@@ -13,6 +13,25 @@ use Illuminate\Support\Facades\Hash;
 /** Registro, inicio y cierre de sesión (RF-01, RNF-04). */
 class AuthController extends Controller
 {
+    private const CUENTA_DESACTIVADA = 'Tu cuenta está desactivada. Comunícate con el administrador.';
+
+    /** Devuelve el mensaje de error si el acceso no procede, o null si las credenciales son válidas. */
+    private function motivoDeRechazo(?User $usuario, LoginRequest $request): ?string
+    {
+        if ($usuario?->estaBloqueado()) {
+            $min = (int) ceil(now()->diffInMinutes($usuario->bloqueado_hasta, true));
+            $error = "Cuenta bloqueada temporalmente por intentos fallidos. Inténtalo en $min minuto(s).";
+        } elseif (! $usuario || ! Hash::check($request->password, $usuario->password)) {
+            if ($usuario) {
+                $this->registrarFallo($usuario);
+            }
+            $error = 'Correo o contraseña incorrectos.';
+        } elseif (! $usuario->activo) {
+            $error = self::CUENTA_DESACTIVADA;
+        }
+        return $error ?? null;
+    }
+
     public function showLogin()
     {
         return view('auth.login');
@@ -21,20 +40,9 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         $usuario = User::where('email', mb_strtolower($request->email))->first();
-
-        if ($usuario?->estaBloqueado()) {
-            $min = (int) ceil(now()->diffInMinutes($usuario->bloqueado_hasta, true));
-            return back()->withInput($request->only('email'))
-                ->with('error', "Cuenta bloqueada temporalmente por intentos fallidos. Inténtalo en $min minuto(s).");
-        }
-        if (! $usuario || ! Hash::check($request->password, $usuario->password)) {
-            if ($usuario) {
-                $this->registrarFallo($usuario);
-            }
-            return back()->withInput($request->only('email'))->with('error', 'Correo o contraseña incorrectos.');
-        }
-        if (! $usuario->activo) {
-            return back()->with('error', 'Tu cuenta está desactivada. Comunícate con el administrador.');
+        $error = $this->motivoDeRechazo($usuario, $request);
+        if ($error !== null) {
+            return back()->withInput($request->only('email'))->with('error', $error);
         }
         $usuario->forceFill(['intentos_fallidos' => 0, 'bloqueado_hasta' => null])->save();
         Auth::login($usuario);

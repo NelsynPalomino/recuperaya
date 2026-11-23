@@ -26,7 +26,7 @@ class LugarController extends Controller
     {
         $item = Lugar::create($request->validated());   // asignación masiva con $guarded = []
         Auditoria::registrar('crear_lugar', $item->nombre);
-        return redirect()->route('lugares.index')->with('exito', 'Lugar "' . $item->nombre . '" creado(a).');
+        return redirect()->route('lugares.index')->with('exito', $this->mensaje($item->nombre, 'creado'));
     }
 
     public function edit(Lugar $lugar)
@@ -37,7 +37,7 @@ class LugarController extends Controller
     public function update(StoreCatalogoRequest $request, Lugar $lugar)
     {
         $lugar->update($request->validated());
-        return redirect()->route('lugares.index')->with('exito', 'Lugar "' . $lugar->nombre . '" actualizado(a).');
+        return redirect()->route('lugares.index')->with('exito', $this->mensaje($lugar->nombre, 'actualizado'));
     }
 
     /** Eliminar registro: solo si no está en uso; si está en uso, se sugiere desactivarlo. */
@@ -50,6 +50,12 @@ class LugarController extends Controller
         $nombre = $lugar->nombre;
         $lugar->delete();
         Auditoria::registrar('eliminar_lugar', $nombre);
-        return redirect()->route('lugares.index')->with('exito', 'Lugar "' . $nombre . '" eliminado(a).');
+        return redirect()->route('lugares.index')->with('exito', $this->mensaje($nombre, 'eliminado'));
+    }
+
+    /** Mensaje de confirmación de las acciones del CRUD. */
+    private function mensaje(string $nombre, string $accion): string
+    {
+        return sprintf('Lugar "%s" %s(a).', $nombre, $accion);
     }
 }

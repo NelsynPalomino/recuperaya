@@ -27,3 +27,12 @@ yarn-error.log
 tests/E2E/capturas/
 __pycache__/
 .pytest_cache/
+
+# Entorno de pruebas Cypress y SonarQube
+.env.cypress
+database/*.sqlite
+cypress/videos/
+cypress/screenshots/
+cypress/reports/
+.scannerwork/
+/coverage.xml

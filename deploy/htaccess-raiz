@@ -1,0 +1,9 @@
+# Se copia como .htaccess en la raíz del hosting (htdocs) durante el despliegue.
+# InfinityFree publica la carpeta htdocs, pero Laravel debe responder desde public/.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(\.env|\.git|composer\.(json|lock)|artisan)$ - [F,L]
+    RewriteRule ^(app|bootstrap|config|database|routes|storage|tests|vendor|deploy)(/|$) - [F,L]
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>

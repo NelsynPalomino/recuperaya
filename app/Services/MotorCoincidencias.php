@@ -31,7 +31,11 @@ class MotorCoincidencias
             $p += 40;
         }
         $d = abs($dias);
-        $p += $d <= 3 ? 30 : ($d <= 10 ? 20 : 10);
+        $p += match (true) {
+            $d <= 3 => 30,
+            $d <= 10 => 20,
+            default => 10,
+        };
         if (self::colorParecido($objeto['color'] ?? '', $reporte['color'] ?? '')) {
             $p += 10;
         }

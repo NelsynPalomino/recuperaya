@@ -1,0 +1,208 @@
+
+
+DevTools listening on ws://127.0.0.1:60791/devtools/browser/a13e723d-bb9d-4c4a-bbf4-233718946800
+Couldn't determine Mocha version
+
+====================================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        13.17.0                                                                        │
+  │ Browser:        Electron 118 (headless)                                                        │
+  │ Node Version:   v24.19.0 (C:\Program Files\nodejs\node.exe)                                    │
+  │ Specs:          5 found (01_autenticacion.cy.js, 02_registro_usuario.cy.js, 03_objetos_crud.cy │
+  │                 .js, 04_navegacion_y_permisos.cy.js, 05_proceso_negocio_y_reportes.cy.js)      │
+  │ Searched:       cypress/e2e/**/*.cy.js                                                         │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  01_autenticacion.cy.js                                                          (1 of 5)
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        3                                                                                │
+  │ Passing:      3                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  2                                                                                │
+  │ Video:        true                                                                             │
+  │ Duration:     11 seconds                                                                       │
+  │ Spec Ran:     01_autenticacion.cy.js                                                           │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Screenshots)
+
+  -  C:\xampp\htdocs\recuperaya_laravel\cypress\screenshots\01_autenticacion.cy.js\CY     (1280x846)
+     -01_login_correcto.png                                                                         
+  -  C:\xampp\htdocs\recuperaya_laravel\cypress\screenshots\01_autenticacion.cy.js\CY     (1280x720)
+     -02_login_incorrecto.png                                                                       
+
+
+  (Video)
+
+  -  Video output: C:\xampp\htdocs\recuperaya_laravel\cypress\videos\01_autenticacion.cy.js.mp4
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  02_registro_usuario.cy.js                                                       (2 of 5)
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        2                                                                                │
+  │ Passing:      2                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  2                                                                                │
+  │ Video:        true                                                                             │
+  │ Duration:     10 seconds                                                                       │
+  │ Spec Ran:     02_registro_usuario.cy.js                                                        │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Screenshots)
+
+  -  C:\xampp\htdocs\recuperaya_laravel\cypress\screenshots\02_registro_usuario.cy.js    (1280x1025)
+     \CY-04_registro_correo_invalido.png                                                            
+  -  C:\xampp\htdocs\recuperaya_laravel\cypress\screenshots\02_registro_usuario.cy.js    (1280x1037)
+     \CY-05_registro_exitoso.png                                                                    
+
+
+  (Video)
+
+  -  Video output: C:\xampp\htdocs\recuperaya_laravel\cypress\videos\02_registro_usuario.cy.js.mp4
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  03_objetos_crud.cy.js                                                           (3 of 5)
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        4                                                                                │
+  │ Passing:      4                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  5                                                                                │
+  │ Video:        true                                                                             │
+  │ Duration:     23 seconds                                                                       │
+  │ Spec Ran:     03_objetos_crud.cy.js                                                            │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Screenshots)
+
+  -  C:\xampp\htdocs\recuperaya_laravel\cypress\screenshots\03_objetos_crud.cy.js\CY-    (1280x2327)
+     06_objeto_registrado.png                                                                       
+  -  C:\xampp\htdocs\recuperaya_laravel\cypress\screenshots\03_objetos_crud.cy.js\CY-    (1280x1153)
+     07_validacion_descripcion.png                                                                  
+  -  C:\xampp\htdocs\recuperaya_laravel\cypress\screenshots\03_objetos_crud.cy.js\CY-     (1280x720)
+     08_objeto_editado.png                                                                          
+  -  C:\xampp\htdocs\recuperaya_laravel\cypress\screenshots\03_objetos_crud.cy.js\CY-     (1280x720)
+     09_objeto_eliminado.png                                                                        
+  -  C:\xampp\htdocs\recuperaya_laravel\cypress\screenshots\03_objetos_crud.cy.js\CY-     (1280x720)
+     09b_ejecutor_cypress.png                                                                       
+
+
+  (Video)
+
+  -  Video output: C:\xampp\htdocs\recuperaya_laravel\cypress\videos\03_objetos_crud.cy.js.mp4
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  04_navegacion_y_permisos.cy.js                                                  (4 of 5)
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        2                                                                                │
+  │ Passing:      2                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  2                                                                                │
+  │ Video:        true                                                                             │
+  │ Duration:     13 seconds                                                                       │
+  │ Spec Ran:     04_navegacion_y_permisos.cy.js                                                   │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Screenshots)
+
+  -  C:\xampp\htdocs\recuperaya_laravel\cypress\screenshots\04_navegacion_y_permisos.     (1280x720)
+     cy.js\CY-10_navegacion_modulos.png                                                             
+  -  C:\xampp\htdocs\recuperaya_laravel\cypress\screenshots\04_navegacion_y_permisos.     (1280x720)
+     cy.js\CY-11_acceso_denegado.png                                                                
+
+
+  (Video)
+
+  -  Video output: C:\xampp\htdocs\recuperaya_laravel\cypress\videos\04_navegacion_y_permisos.cy.js.mp4
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  05_proceso_negocio_y_reportes.cy.js                                             (5 of 5)
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        2                                                                                │
+  │ Passing:      2                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  4                                                                                │
+  │ Video:        true                                                                             │
+  │ Duration:     20 seconds                                                                       │
+  │ Spec Ran:     05_proceso_negocio_y_reportes.cy.js                                              │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Screenshots)
+
+  -  C:\xampp\htdocs\recuperaya_laravel\cypress\screenshots\05_proceso_negocio_y_repo     (1280x720)
+     rtes.cy.js\CY-12_reporte_perdida.png                                                           
+  -  C:\xampp\htdocs\recuperaya_laravel\cypress\screenshots\05_proceso_negocio_y_repo    (1280x2972)
+     rtes.cy.js\CY-13a_reportes_sin_filtro.png                                                      
+  -  C:\xampp\htdocs\recuperaya_laravel\cypress\screenshots\05_proceso_negocio_y_repo    (1280x2250)
+     rtes.cy.js\CY-13b_reportes_filtrados.png                                                       
+  -  C:\xampp\htdocs\recuperaya_laravel\cypress\screenshots\05_proceso_negocio_y_repo     (1280x720)
+     rtes.cy.js\CY-13c_ejecutor_cypress.png                                                         
+
+
+  (Video)
+
+  -  Video output: C:\xampp\htdocs\recuperaya_laravel\cypress\videos\05_proceso_negocio_y_reportes.cy.js.mp4
+
+
+====================================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ ✔  01_autenticacion.cy.js                   00:11        3        3        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔  02_registro_usuario.cy.js                00:10        2        2        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔  03_objetos_crud.cy.js                    00:23        4        4        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔  04_navegacion_y_permisos.cy.js           00:13        2        2        -        -        - │
+  ├────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ ✔  05_proceso_negocio_y_reportes.cy.js      00:20        2        2        -        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    ✔  All specs passed!                        01:19       13       13        -        -        -  
+

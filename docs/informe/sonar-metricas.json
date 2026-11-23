@@ -1,0 +1,228 @@
+{
+  "quality_gate": "Passed (aprobado)",
+  "lineas": "2 810",
+  "metricas": [
+    {
+      "metrica": "Quality Gate",
+      "resultado": "Passed (aprobado) – Sonar way",
+      "interpretacion": "El proyecto cumple las condiciones de calidad configuradas por defecto (Sonar way): sin problemas nuevos de seguridad ni de confiabilidad y con duplicación y deuda técnica bajo los umbrales."
+    },
+    {
+      "metrica": "Bugs (Reliability)",
+      "resultado": "0 · calificación A",
+      "interpretacion": "No se detectaron defectos probables en el código (errores de lógica, valores nulos, recursos sin cerrar)."
+    },
+    {
+      "metrica": "Vulnerabilities (Security)",
+      "resultado": "0 · calificación A",
+      "interpretacion": "No se encontraron problemas de seguridad: Laravel aplica consultas parametrizadas, protección CSRF y hash de contraseñas."
+    },
+    {
+      "metrica": "Security Hotspots",
+      "resultado": "0 (revisión A)",
+      "interpretacion": "No hay fragmentos sensibles pendientes de revisión manual."
+    },
+    {
+      "metrica": "Code Smells (Maintainability)",
+      "resultado": "74 · calificación A (deuda 3 h 59 min, ratio 0,3 %)",
+      "interpretacion": "Problemas de mantenibilidad: 65 en public/css/app.css (54 selectores duplicados, contraste, movimiento reducido, !important) y 9 en PHP (literales duplicados, ternarios anidados, métodos con muchos return). 5 de severidad alta y 69 media."
+    },
+    {
+      "metrica": "Coverage",
+      "resultado": "0,0 % (639 líneas por cubrir)",
+      "interpretacion": "Primer análisis sin reporte de cobertura: el PHP de XAMPP no tenía Xdebug ni PCOV. Se corrigió en el análisis final (ver 4.4): 77,8 % del proyecto y 95,8 % del código nuevo."
+    },
+    {
+      "metrica": "Duplicated Lines",
+      "resultado": "2,2 % (112 líneas, 5 bloques)",
+      "interpretacion": "Duplicación baja. Se concentra en config/database.php (configuración generada por Laravel), StoreObjetoRequest y StoreReportePerdidaRequest (reglas de validación parecidas)."
+    },
+    {
+      "metrica": "Tamaño y complejidad",
+      "resultado": "2 810 líneas (PHP 2 471, CSS 339) · 99 archivos · complejidad ciclomática 316 · cognitiva 113",
+      "interpretacion": "Proyecto pequeño-mediano; la complejidad está repartida en controladores y servicios cortos."
+    }
+  ],
+  "preguntas": [
+    [
+      "¿Qué resultado obtuvo el proyecto en el Quality Gate?",
+      "El proyecto obtuvo **Passed (aprobado)** con el Quality Gate por defecto “Sonar way”, tanto en el primer análisis como en el análisis final. El primer análisis se ejecutó con el perfil por defecto “Sonar way core” (78 reglas PHP), que no encontró problemas, y luego con el perfil integrado más exigente “Sonar way comprehensive” (176 reglas PHP, 425 JS y reglas CSS), cuyos resultados se presentan aquí. Tras implementar las mejoras, SonarQube evaluó también el “código nuevo”: en un análisis intermedio el gate falló solo por la condición de cobertura (0 %, sin herramienta de medición); al instalar PCOV y agregar pruebas, el análisis final cumple todas las condiciones: cobertura del código nuevo 95,8 % (≥ 80 %), 0 problemas nuevos y 0,3 % de duplicación nueva (≤ 3 %)."
+    ],
+    [
+      "¿Qué problemas fueron identificados?",
+      "74 code smells de mantenibilidad: selectores CSS repetidos (css:S4666, 54 casos), literales repetidos en PHP que deberían ser constantes (php:S1192, 5 casos de severidad alta, p. ej. \"COUNT(*) as total\" en EstadisticaService), ternarios anidados (php:S3358 en EstadisticaService y MotorCoincidencias), métodos con más de 3 return (php:S1142 en AuthController::login y ReclamoService::reclamar), texto con contraste insuficiente (css:S7924), animaciones sin respetar prefers-reduced-motion (css:S9440), uso de !important (css:S9423) y un bloque CSS vacío (css:S4658)."
+    ],
+    [
+      "¿Qué componentes presentan mayores observaciones?",
+      "La hoja de estilos **public/css/app.css** concentra 65 de las 74 observaciones (88 %), porque al renovar el tema visual se volvieron a declarar selectores como :root. En el backend, **EstadisticaService.php** tiene 2 observaciones y AuthController, ReclamoService, MotorCoincidencias, CategoriaController y LugarController tienen 1 cada uno. En duplicación destacan StoreObjetoRequest.php (58,2 %) y config/database.php (30,3 %)."
+    ],
+    [
+      "¿Qué vulnerabilidades fueron detectadas, si existen?",
+      "**Ninguna**: 0 vulnerabilidades y 0 security hotspots (calificación A). Esto es coherente con las medidas implementadas: contraseñas y respuestas de verificación con bcrypt, protección CSRF, consultas parametrizadas de Eloquent, $fillable/$guarded contra asignación masiva, Gates por rol y bloqueo de la cuenta tras 5 intentos."
+    ],
+    [
+      "¿Cuál es el nivel de cobertura de código obtenido?",
+      "En el primer análisis SonarQube reportó **0,0 %** porque el PHP de XAMPP no tenía Xdebug ni PCOV para generar el reporte. Se instaló **PCOV** y se configuró la importación de coverage.xml: la cobertura final es **77,8 %** del proyecto (799 líneas por cubrir) y **95,8 %** del código nuevo; PHPUnit reporta 79,6 % de las líneas de app/. Los componentes con menor cobertura son modelos y controladores simples (InicioController, NotificacionController, PaginaController) que se prueban de extremo a extremo con Cypress."
+    ],
+    [
+      "¿Qué mejoras deberían implementarse para elevar la calidad del software?",
+      "1) Instalar PCOV o Xdebug y configurar sonar.php.coverage.reportPaths para medir la cobertura (meta ≥ 70 %) — implementado: 77,8 %. 2) Unificar los selectores repetidos de app.css y eliminar los !important y el bloque vacío. 3) Ajustar los colores con contraste insuficiente (WCAG) y envolver las animaciones en @media (prefers-reduced-motion: no-preference). 4) Reemplazar los literales repetidos por constantes (p. ej. una constante TOTAL = 'COUNT(*) as total'). 5) Sustituir ternarios anidados por match o if. 6) Reducir los return de ReclamoService::reclamar() extrayendo métodos privados de validación, lo que además baja su complejidad ciclomática (V(G) = 7). 7) Extraer las reglas de validación comunes de StoreObjetoRequest y StoreReportePerdidaRequest a un trait. 8) Ejecutar el análisis de SonarQube y las pruebas en cada rama antes de fusionar (integración continua)."
+    ]
+  ],
+  "reporte": {
+    "tasa": "35,9",
+    "dias": "5,3",
+    "rechazados": "14"
+  },
+  "resumen_mejora": "code smells abiertos de 74 a 0 y cobertura de 0 % a 77,8 %",
+  "mejoras": [
+    [
+      "css:S4666 (54)",
+      "Selectores repetidos: el tema 2.0 redefinía al final reglas del tema anterior.",
+      "Se fusionó cada selector en su última aparición con un script (fusionar_css.py), descartando propiedades ya redefinidas y conservando la cascada.",
+      "public/css/app.css"
+    ],
+    [
+      "css:S9440 (4)",
+      "Animaciones sin respetar “reducir movimiento”.",
+      "Las transiciones se movieron a @media (prefers-reduced-motion: no-preference).",
+      "public/css/app.css"
+    ],
+    [
+      "css:S9423 (1)",
+      "!important en .nueva.",
+      "Se reemplazó por mayor especificidad: .lista li.nueva { padding-left: 10px }.",
+      "public/css/app.css"
+    ],
+    [
+      "css:S4658 (1)",
+      "Bloque vacío .oculto-movil { }.",
+      "Se eliminó (la regla útil está en su @media).",
+      "public/css/app.css"
+    ],
+    [
+      "php:S1192 (5)",
+      "Literales repetidos.",
+      "Constante TOTAL en EstadisticaService; método mensaje() en Categoria/LugarController; variables $hostLocal y $archivoLog en la configuración.",
+      "EstadisticaService, Admin/*, config/*"
+    ],
+    [
+      "php:S3358 (2)",
+      "Ternarios anidados.",
+      "Se reemplazaron por expresiones match (franjaHoraria() y puntaje por días).",
+      "EstadisticaService, MotorCoincidencias"
+    ],
+    [
+      "php:S1142 (1)",
+      "AuthController::login() con 4 return.",
+      "Se extrajo motivoDeRechazo(); login() quedó con 2 return.",
+      "AuthController"
+    ],
+    [
+      "Hallazgo extra",
+      "Orden variable de lugares con igual total en el reporte.",
+      "Orden secundario por nombre (orderBy) en categorías y lugares.",
+      "EstadisticaService"
+    ],
+    [
+      "Cobertura (Quality Gate)",
+      "0 % de cobertura: no había herramienta de medición; el gate exigía 80 % en código nuevo.",
+      "Se instaló PCOV, se generó coverage.xml y se agregaron 8 pruebas (AdministracionYExportacionTest): cobertura total 77,8 % y 95,8 % en código nuevo.",
+      "php.ini, tests/Feature, sonar-project.properties"
+    ]
+  ],
+  "comparacion": [
+    [
+      "Quality Gate",
+      "Passed",
+      "Passed (todas las condiciones en OK)",
+      "Se mantiene aprobado"
+    ],
+    [
+      "Code smells abiertos",
+      "74",
+      "0",
+      "−74 (−100 %)"
+    ],
+    [
+      "Severidad alta (High)",
+      "5",
+      "0",
+      "−5"
+    ],
+    [
+      "Deuda técnica",
+      "3 h 59 min (0,3 %)",
+      "0 min abierta (0,0 %)",
+      "−3 h 59 min"
+    ],
+    [
+      "Bugs / Vulnerabilidades",
+      "0 / 0",
+      "0 / 0",
+      "Sin cambio (A / A)"
+    ],
+    [
+      "Security Hotspots",
+      "0",
+      "0",
+      "Sin cambio"
+    ],
+    [
+      "Cobertura (total)",
+      "0,0 %",
+      "77,8 %",
+      "+77,8 puntos"
+    ],
+    [
+      "Cobertura (código nuevo)",
+      "—",
+      "95,8 % (mínimo 80 %)",
+      "Cumple"
+    ],
+    [
+      "Pruebas importadas",
+      "0",
+      "75 (100 % de éxito)",
+      "+75"
+    ],
+    [
+      "Duplicación",
+      "2,2 %",
+      "2,2 % (código nuevo 0,3 %)",
+      "Sin cambio"
+    ],
+    [
+      "Líneas de código",
+      "2 810",
+      "2 795",
+      "−15 (CSS más compacto)"
+    ],
+    [
+      "Observaciones revisadas",
+      "—",
+      "2 aceptadas + 4 falsos positivos",
+      "Triage documentado"
+    ]
+  ],
+  "triaje": [
+    [
+      "css:S7924 (4)",
+      "app.css líneas 15, 239, 340, 346",
+      "Falso positivo",
+      "Texto blanco sobre el fondo morado del contenedor (.barra, .encabezado, .acceso .lado; degradado #2a1660 → #6a3df0); el analizador solo ve el fondo semitransparente. Contraste calculado: entre 4,5:1 y 15,2:1, cumple el mínimo WCAG AA (4,5:1). Mejora futura: oscurecer el tono claro del degradado para superar holgadamente ese mínimo."
+    ],
+    [
+      "css:S9423 (1)",
+      "app.css línea 126 (@media print)",
+      "Aceptado",
+      "!important dentro de @media print es el patrón habitual para ocultar menú, pie y botones al imprimir el reporte."
+    ],
+    [
+      "php:S1142 (1)",
+      "ReclamoService::reclamar()",
+      "Aceptado",
+      "Las salidas tempranas son cláusulas de guarda de la regla RN-06; el método está cubierto por 7 pruebas de caja blanca (Anexo A). Su refactorización se planificó para la siguiente iteración para no alterar el caso práctico analizado."
+    ]
+  ]
+}

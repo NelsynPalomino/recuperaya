@@ -1,0 +1,151 @@
+22:39:35.317 INFO  Scanner configuration file: C:\sonar\sonar-scanner-8.4.0.16527-windows-x64\bin\..\conf\sonar-scanner.properties
+22:39:35.325 INFO  Project root configuration file: C:\xampp\htdocs\recuperaya_laravel\sonar-project.properties
+22:39:35.367 INFO  SonarScanner CLI 8.4.0.16527
+22:39:35.400 INFO  Windows 11 10.0 amd64
+22:39:40.477 INFO  Communicating with SonarQube Community Build 26.11.0.134175
+22:39:40.480 INFO  JRE provisioning: os[windows], arch[amd64]
+22:39:45.273 INFO  Starting SonarScanner Engine...
+22:39:45.282 INFO  Java 21.0.13 Eclipse Adoptium (64-bit)
+22:39:55.163 INFO  Load global settings
+22:39:55.592 INFO  Load global settings (done) | time=442ms
+22:39:55.599 INFO  Server id: 147B411E-AaHDWs3MTOENHz8oTfyu
+22:39:56.538 INFO  Loading required plugins
+22:39:56.541 INFO  Load plugins index
+22:39:56.639 INFO  Load plugins index (done) | time=92ms
+22:39:56.642 INFO  Load/download plugins
+22:39:56.666 INFO  Load/download plugins (done) | time=27ms
+22:40:00.980 INFO  Load project settings for component key: 'recuperaya'
+22:40:01.098 INFO  Load project settings for component key: 'recuperaya' (done) | time=126ms
+22:40:01.241 INFO  Process project properties
+22:40:01.305 INFO  Process project properties (done) | time=64ms
+22:40:01.335 INFO  Project key: recuperaya
+22:40:01.336 INFO  Base dir: C:\xampp\htdocs\recuperaya_laravel
+22:40:01.337 INFO  Working dir: C:\xampp\htdocs\recuperaya_laravel\.scannerwork
+22:40:02.582 INFO  Load quality profiles
+22:40:15.540 INFO  Load quality profiles (done) | time=12937ms
+22:40:16.522 INFO  Load active rules
+22:40:25.119 INFO  Load active rules (done) | time=8471ms
+22:40:25.441 INFO  Load analysis cache
+22:40:25.806 INFO  Load analysis cache | time=366ms
+22:40:26.368 INFO  Preprocessing files...
+22:40:28.429 INFO  3 languages detected in 117 preprocessed files (done) | time=2058ms
+22:40:28.432 INFO  44 files ignored because of inclusion/exclusion patterns
+22:40:28.434 INFO  0 files ignored because of scm ignore settings
+22:40:28.449 INFO  Loading plugins for detected languages
+22:40:28.452 INFO  Load/download plugins
+22:40:28.544 INFO  Load/download plugins (done) | time=93ms
+22:40:30.184 INFO  Load project repositories
+22:40:31.019 INFO  Load project repositories (done) | time=835ms
+22:40:31.474 INFO  Indexing files...
+22:40:31.475 INFO  Project configuration:
+22:40:31.475 INFO    Excluded sources: vendor/**, node_modules/**, storage/**, bootstrap/cache/**, public/build/**, **/*.bak_*, database/*.sqlite, tests/**/*.php, cypress/**/*.js
+22:40:31.477 INFO    Included tests: tests/**/*.php, cypress/**/*.js
+22:40:33.658 INFO  116 files indexed (done) | time=2183ms
+22:40:33.663 INFO  Quality profile for css: Sonar way comprehensive
+22:40:33.664 INFO  Quality profile for js: Sonar way comprehensive
+22:40:33.666 INFO  Quality profile for php: Sonar way comprehensive
+22:40:33.667 INFO  ------------- Run sensors on module RecuperaYa - Objetos perdidos y encontrados
+22:40:33.803 INFO  Load metrics repository
+22:40:33.903 INFO  Load metrics repository (done) | time=101ms
+22:40:36.835 INFO  Reflections took 270 ms to scan 1 urls, producing 30 keys and 313 values
+22:40:37.207 INFO  Sensor IaC YAML File Type Classification Sensor [iac]
+22:40:37.217 INFO  Sensor IaC YAML File Type Classification Sensor [iac] (done) | time=11ms
+22:40:37.218 INFO  Sensor PHP sensor [php]
+22:40:37.281 INFO  Starting PHP symbol indexer
+22:40:37.294 INFO  107 source files to be analyzed
+22:40:42.238 INFO  107/107 source files have been analyzed
+22:40:42.240 INFO  Cached information of global symbols will be used for 0 out of 107 files. Global symbols were recomputed for the remaining files.
+22:40:42.294 INFO  Starting PHP rules
+22:40:42.299 INFO  107 source files to be analyzed
+22:40:47.565 INFO  107/107 source files have been analyzed
+22:40:47.566 INFO  The PHP analyzer was able to leverage cached data from previous analyses for 0 out of 107 files. These files were not parsed.
+22:40:47.566 INFO  Sensor PHP sensor [php] (done) | time=10348ms
+22:40:47.567 INFO  Sensor Analyzer for "php.ini" files [php]
+22:40:47.570 INFO  Sensor Analyzer for "php.ini" files [php] (done) | time=3ms
+22:40:47.571 INFO  Sensor PHPUnit report sensor [php]
+22:40:47.572 INFO  No PHPUnit tests reports provided (see 'sonar.php.tests.reportPath' property)
+22:40:47.572 INFO  No PHPUnit coverage reports provided (see 'sonar.php.coverage.reportPaths' property)
+22:40:47.573 INFO  Sensor PHPUnit report sensor [php] (done) | time=1ms
+22:40:47.574 INFO  Sensor IaC hadolint report Sensor [iac]
+22:40:47.574 INFO  Sensor IaC hadolint report Sensor [iac] (done) | time=2ms
+22:40:47.575 INFO  Sensor Java Config Sensor [iac]
+22:40:47.576 INFO  There are no files to be analyzed for the Java language
+22:40:47.576 INFO  Sensor Java Config Sensor [iac] (done) | time=1ms
+22:40:47.577 INFO  Sensor IaC Docker Sensor [iac]
+22:40:47.582 INFO  There are no files to be analyzed for the Docker language
+22:40:47.584 INFO  Sensor IaC Docker Sensor [iac] (done) | time=7ms
+22:40:47.584 INFO  Sensor HTML [web]
+22:40:48.428 INFO  Sensor HTML [web] (done) | time=845ms
+22:40:48.429 INFO  Sensor TextAndSecretsSensor [text]
+22:40:48.523 INFO  Available processors: 4
+22:40:48.524 INFO  Using 4 threads for analysis.
+22:40:51.317 INFO  Start fetching files for the text and secrets analysis
+22:40:51.736 INFO  Using Git CLI to retrieve dirty files
+22:40:51.878 INFO  Retrieving language associated files and files included via "sonar.text.inclusions" that are tracked by git
+22:40:51.882 INFO  Starting the text and secrets analysis
+22:40:51.886 INFO  115 source files to be analyzed for the text and secrets analysis
+22:40:52.382 INFO  115/115 source files have been analyzed for the text and secrets analysis
+22:40:52.404 INFO  Sensor TextAndSecretsSensor [text] (done) | time=3975ms
+22:40:52.417 INFO  ------------- Run sensors on project
+22:40:54.616 INFO  Sensor JavaScript/TypeScript/CSS analysis [javascript]
+22:40:56.983 INFO  Detected os: Windows 11 arch: amd64 alpine: false. Platform: WIN_X64
+22:40:56.985 INFO  Deploy location C:\Users\HP\.sonar\js\node-runtime, tagetRuntime: C:\Users\HP\.sonar\js\node-runtime\node.exe,  version: C:\Users\HP\.sonar\js\node-runtime\version.txt
+22:40:59.143 INFO  Using embedded Node.js runtime.
+22:40:59.145 INFO  Using Node.js executable: 'C:\Users\HP\.sonar\js\node-runtime\node.exe'.
+22:41:08.773 INFO  Memory configuration: OS (3877 MB), Node.js (2131 MB).
+22:41:08.818 INFO  gRPC analyze-project server listening on 127.0.0.1:55476
+22:41:13.266 INFO  Plugin version: [14.3.0.46350]
+22:41:25.988 INFO  Found 0 tsconfig.json file(s): []
+22:41:26.389 INFO  8 source files to be analyzed
+22:41:26.434 INFO  Analyzing 7 file(s) using default options [lib: lib.esnext.d.ts, lib.dom.d.ts]
+22:41:26.499 INFO  8/8 source files have been analyzed
+22:41:28.192 INFO  Hit the cache for 0 out of 7
+22:41:28.215 INFO  Miss the cache for 7 out of 7: ANALYSIS_MODE_INELIGIBLE [7/7]
+22:41:28.220 INFO  Sensor JavaScript/TypeScript/CSS analysis [javascript] (done) | time=33603ms
+22:41:28.223 INFO  Sensor IaC Project Sensor [iac]
+22:41:28.444 INFO  Sensor IaC Project Sensor [iac] (done) | time=218ms
+22:41:28.445 INFO  Sensor Zero Coverage Sensor
+22:41:29.527 INFO  Sensor Zero Coverage Sensor (done) | time=1082ms
+22:41:29.535 INFO  ------------- Gather SCA dependencies on project
+22:41:29.832 INFO  Dependency analysis skipped
+22:41:30.723 INFO  SCM Publisher SCM provider for this project is: git
+22:41:30.748 INFO  SCM Publisher 22 source files to be analyzed
+22:41:34.240 INFO  SCM Publisher 0/22 source files have been analyzed (done) | time=3491ms
+22:41:34.393 WARN  Missing blame information for the following files:
+22:41:34.394 WARN    * app/Services/EstadisticaService.php
+22:41:34.431 WARN    * cypress/e2e/05_proceso_negocio_y_reportes.cy.js
+22:41:34.432 WARN    * config/database.php
+22:41:34.451 WARN    * public/css/app.css
+22:41:34.471 WARN    * tests/Feature/CajaBlancaReclamoTest.php
+22:41:34.471 WARN    * cypress/e2e/04_navegacion_y_permisos.cy.js
+22:41:34.472 WARN    * cypress/e2e/01_autenticacion.cy.js
+22:41:34.472 WARN    * cypress/e2e/02_registro_usuario.cy.js
+22:41:34.472 WARN    * database/seeders/HistorialPruebasSeeder.php
+22:41:34.472 WARN    * app/Http/Controllers/EstadisticaController.php
+22:41:34.490 WARN    * cypress/support/commands.js
+22:41:34.529 WARN    * app/Http/Controllers/Admin/LugarController.php
+22:41:34.536 WARN    * resources/views/estadisticas/_kpis.blade.php
+22:41:34.548 WARN    * app/Http/Controllers/Admin/CategoriaController.php
+22:41:34.549 WARN    * app/Http/Controllers/AuthController.php
+22:41:34.549 WARN    * resources/views/estadisticas/index.blade.php
+22:41:34.549 WARN    * config/logging.php
+22:41:35.693 WARN    * cypress/e2e/03_objetos_crud.cy.js
+22:41:35.694 WARN    * app/Services/MotorCoincidencias.php
+22:41:35.703 WARN    * tests/Feature/CajaNegraObjetoTest.php
+22:41:35.704 WARN    * tests/Feature/ReporteEstadisticoTest.php
+22:41:35.704 WARN    * cypress/support/e2e.js
+22:41:35.706 WARN  This may lead to missing/broken features in SonarQube
+22:41:35.709 INFO  CPD Executor 38 files had no CPD blocks
+22:41:35.710 INFO  CPD Executor Calculating CPD for 61 files
+22:41:35.731 INFO  CPD Executor CPD calculation finished (done) | time=984ms
+22:41:35.897 INFO  SCM revision ID '21659faa7efad353deca1b53ccfa08a2322678d1'
+22:41:37.298 INFO  Analysis report generated in 1439ms, dir size=653.8 kB
+22:41:43.644 INFO  Analysis report compressed in 6335ms, zip size=364.8 kB
+22:41:44.315 INFO  Analysis report uploaded in 668ms
+22:41:44.325 INFO  ANALYSIS SUCCESSFUL, you can find the results at: http://localhost:9000/dashboard?id=recuperaya
+22:41:44.327 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+22:41:44.328 INFO  More about the report processing at http://localhost:9000/api/ce/task?id=7576b5e4-cb98-405f-adca-e65c958e0f07
+22:41:46.419 INFO  Analysis total time: 2:00.811 min
+22:41:46.587 INFO  SonarScanner Engine completed successfully
+22:41:46.699 INFO  EXECUTION SUCCESS
+22:41:46.737 INFO  Total time: 2:11.390s

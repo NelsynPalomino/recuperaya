@@ -1,0 +1,62 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+body{font-family:"Segoe UI",Arial,sans-serif;margin:0;padding:20px;width:1100px;background:#fff;color:#1f1640}
+h1{font-size:22px;text-align:center;color:#3b1d8f;margin:0 0 4px}.sub{text-align:center;color:#666;font-size:13px;margin-bottom:8px}
+</style></head><body>
+<h1>Grafo de flujo de ReclamoService::reclamar()</h1>
+<div class="sub">Nodos predicado P1–P6 (rombos) · V(G) = P + 1 = 6 + 1 = 7 · V(G) = A − N + 2 = 21 − 16 + 2 = 7</div>
+<svg width="1100" height="900" viewBox="0 0 1100 900" font-size="13">
+<defs><marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#444"/></marker></defs>
+<style>.n{fill:#f5f0ff;stroke:#6d28d9;stroke-width:2}.p{fill:#fff6ed;stroke:#c2410c;stroke-width:2}.r{fill:#ecfdf5;stroke:#047857;stroke-width:2}.x{fill:#fff1f3;stroke:#9f1239;stroke-width:2}
+line,path.l{stroke:#444;stroke-width:1.6;fill:none;marker-end:url(#f)}text{text-anchor:middle}.e{font-size:12px;fill:#333}.t{font-weight:700}</style>
+<!-- 1 inicio -->
+<circle class="n" cx="300" cy="40" r="22"/><text x="300" y="45" class="t">1</text><text x="470" y="45" class="e">inicio: reclamar($userId, $objeto, $r1, $r2)</text>
+<line x1="300" y1="62" x2="300" y2="92"/>
+<!-- P1 -->
+<polygon class="p" points="300,95 350,125 300,155 250,125"/><text x="300" y="130" class="t">2 P1</text>
+<text x="150" y="110" class="e">¿estado ≠ En custodia?</text>
+<line x1="350" y1="125" x2="660" y2="125"/><text x="500" y="118" class="e">sí</text>
+<rect class="x" x="662" y="105" width="300" height="40" rx="8"/><text x="812" y="130">3 · return "no disponible"  (C1)</text>
+<line x1="300" y1="155" x2="300" y2="185"/><text x="312" y="175" class="e">no</text>
+<!-- P2 -->
+<polygon class="p" points="300,188 350,218 300,248 250,218"/><text x="300" y="223" class="t">4 P2</text>
+<text x="140" y="203" class="e">¿reclamo previo rechazado?</text>
+<line x1="350" y1="218" x2="660" y2="218"/><text x="500" y="211" class="e">sí</text>
+<rect class="x" x="662" y="198" width="300" height="40" rx="8"/><text x="812" y="223">5 · return "intentos agotados"  (C2)</text>
+<line x1="300" y1="248" x2="300" y2="278"/><text x="312" y="268" class="e">no</text>
+<!-- P3 -->
+<polygon class="p" points="300,281 350,311 300,341 250,311"/><text x="300" y="316" class="t">6 P3</text>
+<text x="125" y="296" class="e">¿reclamo aprobado/entregado?</text>
+<line x1="350" y1="311" x2="660" y2="311"/><text x="500" y="304" class="e">sí</text>
+<rect class="x" x="662" y="291" width="300" height="40" rx="8"/><text x="812" y="316">7 · return "ya tienes reclamo"  (C3)</text>
+<line x1="300" y1="341" x2="300" y2="371"/><text x="312" y="361" class="e">no</text>
+<!-- P4 -->
+<polygon class="p" points="300,374 350,404 300,434 250,404"/><text x="300" y="409" class="t">8 P4</text>
+<text x="135" y="389" class="e">¿no existe reclamo? (??=)</text>
+<line x1="350" y1="404" x2="480" y2="404"/><text x="410" y="397" class="e">sí</text>
+<rect class="n" x="482" y="384" width="190" height="40" rx="8"/><text x="577" y="409">9 · Reclamo::create()</text>
+<path class="l" d="M577,424 L577,470 L325,470"/>
+<line x1="300" y1="434" x2="300" y2="458"/><text x="285" y="452" class="e">no</text>
+<!-- 10 intentos++ -->
+<rect class="n" x="200" y="460" width="200" height="36" rx="8"/><text x="300" y="483">10 · intentos = intentos + 1</text>
+<line x1="300" y1="496" x2="300" y2="526"/>
+<!-- P5 -->
+<polygon class="p" points="300,529 350,559 300,589 250,559"/><text x="300" y="564" class="t">11 P5</text>
+<text x="140" y="544" class="e">¿respuestas correctas?</text>
+<line x1="350" y1="559" x2="660" y2="559"/><text x="500" y="552" class="e">sí</text>
+<rect class="r" x="662" y="539" width="330" height="40" rx="8"/><text x="827" y="564">12 · aprobar + notificar  (C4, C7)</text>
+<line x1="300" y1="589" x2="300" y2="619"/><text x="312" y="609" class="e">no</text>
+<!-- P6 -->
+<polygon class="p" points="300,622 350,652 300,682 250,652"/><text x="300" y="657" class="t">13 P6</text>
+<text x="140" y="637" class="e">¿intentos ≥ 2?</text>
+<line x1="350" y1="652" x2="660" y2="652"/><text x="500" y="645" class="e">sí</text>
+<rect class="x" x="662" y="632" width="330" height="40" rx="8"/><text x="827" y="657">14 · rechazar + notificar  (C6)</text>
+<line x1="300" y1="682" x2="300" y2="712"/><text x="312" y="702" class="e">no</text>
+<rect class="x" x="160" y="714" width="280" height="40" rx="8"/><text x="300" y="739">15 · return "te queda 1 intento"  (C5)</text>
+<!-- fin -->
+<line x1="300" y1="754" x2="300" y2="814"/>
+<path class="l" d="M962,125 L1040,125 L1040,835 L322,835"/>
+<path class="l" d="M962,218 L1040,218"/><path class="l" d="M962,311 L1040,311"/>
+<path class="l" d="M992,559 L1040,559"/><path class="l" d="M992,652 L1040,652"/>
+<circle class="n" cx="300" cy="836" r="22"/><text x="300" y="841" class="t">fin</text>
+</svg>
+</body></html>
