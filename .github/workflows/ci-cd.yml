@@ -40,7 +40,9 @@ jobs:
     name: 6-7 Despliegue y verificación
     needs: pruebas
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    # Se activa cuando el hosting está configurado: variable del repositorio DESPLEGAR = si
+    # (Settings > Secrets and variables > Actions > Variables). Mientras tanto el despliegue se omite.
+    if: github.ref == 'refs/heads/main' && vars.DESPLEGAR == 'si'
     steps:
       - uses: actions/checkout@v4
       - uses: shivammathur/setup-php@v2
