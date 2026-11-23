@@ -40,7 +40,9 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            // En hostings sin enlaces simbólicos (InfinityFree) las fotos se guardan directo en public/storage:
+            // PUBLIC_DISK_PATH=public/storage en el .env del servidor.
+            'root' => env('PUBLIC_DISK_PATH') ? base_path(env('PUBLIC_DISK_PATH')) : storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,

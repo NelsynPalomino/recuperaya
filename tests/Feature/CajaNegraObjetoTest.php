@@ -53,15 +53,20 @@ class CajaNegraObjetoTest extends TestCase
             'CN-05 color con números (clase inválida)' => ['color', 'Negro 123', false],
             'CN-06 color de 2 letras (límite inferior - 1)' => ['color', 'Az', false],
             'CN-07 color compuesto válido' => ['color', 'Azul con rojo', true],
-            'CN-08 fecha de hallazgo hoy (límite)' => ['fecha_hallazgo', now()->toDateString(), true],
-            'CN-09 fecha de hallazgo mañana (futura)' => ['fecha_hallazgo', now()->addDay()->toDateString(), false],
-            'CN-10 fecha con más de un año de antigüedad' => ['fecha_hallazgo', now()->subYear()->subDay()->toDateString(), false],
+            // Las fechas se expresan como desplazamientos y se calculan dentro de la prueba (ya con la zona horaria de la
+            // aplicación): el proveedor de datos se ejecuta antes de iniciar Laravel, con la zona horaria de php.ini.
+            'CN-08 fecha de hallazgo hoy (límite)' => ['fecha_hallazgo', 'today', true],
+            'CN-09 fecha de hallazgo mañana (futura)' => ['fecha_hallazgo', 'tomorrow', false],
+            'CN-10 fecha con más de un año de antigüedad' => ['fecha_hallazgo', '-1 year -1 day', false],
         ];
     }
 
     #[Test] #[DataProvider('casos')]
     public function particiones_y_valores_limite(string $campo, string $valor, bool $valido): void
     {
+        if ($campo === 'fecha_hallazgo') {
+            $valor = now()->modify($valor)->toDateString();
+        }
         $respuesta = $this->enviar([$campo => $valor]);
         $valido ? $respuesta->assertSessionHasNoErrors() : $respuesta->assertSessionHasErrors($campo);
     }

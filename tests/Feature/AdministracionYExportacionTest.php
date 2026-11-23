@@ -13,8 +13,8 @@ use Tests\TestCase;
 
 /**
  * Pruebas complementarias agregadas tras medir la cobertura con PCOV:
- * acceso con cuenta bloqueada/desactivada (RNF-04), CRUD de catálogos (RF-13)
- * y exportaciones del módulo de reportes (RF-12: PDF, CSV y dataset de ML).
+ * acceso con cuenta bloqueada/desactivada (RNF-04), CRUD de catálogos (RF-13),
+ * exportaciones del módulo de reportes (RF-12: PDF, CSV y dataset de ML) y usuarios y roles (RF-02).
  */
 class AdministracionYExportacionTest extends TestCase
 {
@@ -115,5 +115,33 @@ class AdministracionYExportacionTest extends TestCase
         $contenido = $this->actingAs($this->admin)->get(route('estadisticas.ml'))->assertOk()->streamedContent();
         $this->assertStringContainsString('franja_horaria', $contenido);
         $this->assertMatchesRegularExpression('/;(manana|tarde|noche);/', $contenido);
+    }
+
+    // ---------- Usuarios y roles (Admin\UsuarioController) ----------
+
+    #[Test] public function cp59_administrador_cambia_rol_y_desactiva_cuenta(): void
+    {
+        $u = User::factory()->create();
+        $this->actingAs($this->admin)->put(route('usuarios.update', $u), ['rol' => User::ENCARGADO, 'activo' => 0])
+            ->assertRedirect(route('usuarios.index'))->assertSessionHas('exito');
+        $u->refresh();
+        $this->assertSame(User::ENCARGADO, $u->rol);
+        $this->assertFalse((bool) $u->activo);
+        $this->assertDatabaseHas('auditorias', ['accion' => 'cambio_rol']);
+    }
+
+    #[Test] public function cp60_administrador_no_puede_quitarse_su_propio_rol(): void
+    {
+        $this->actingAs($this->admin)->put(route('usuarios.update', $this->admin), ['rol' => User::USUARIO, 'activo' => 1])
+            ->assertSessionHas('error', 'No puedes quitarte el rol de administrador ni desactivar tu propia cuenta.');
+        $this->assertSame(User::ADMIN, $this->admin->refresh()->rol);
+    }
+
+    #[Test] public function cp61_encargado_no_puede_gestionar_usuarios(): void
+    {
+        $encargado = User::factory()->encargado()->create();
+        $this->actingAs($encargado)->get(route('usuarios.index'))->assertForbidden();
+        $this->actingAs($encargado)->put(route('usuarios.update', $encargado), ['rol' => User::ADMIN, 'activo' => 1])->assertForbidden();
+        $this->assertSame(User::ENCARGADO, $encargado->refresh()->rol);
     }
 }
