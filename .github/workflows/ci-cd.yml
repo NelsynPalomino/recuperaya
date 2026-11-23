@@ -86,6 +86,10 @@ jobs:
           rm -f public/storage
           mkdir -p public/storage
           cp -r storage/app/public/. public/storage/
+          # Las carpetas vacías solo tienen .gitignore (excluido del FTP): se crean con un archivo para que existan en el hosting
+          for d in storage/framework/cache/data storage/framework/sessions storage/framework/views storage/logs storage/app/public bootstrap/cache; do
+            mkdir -p "$d" && touch "$d/index.html"
+          done
       - name: Subir al hosting por FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
