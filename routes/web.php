@@ -60,20 +60,3 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-// DIAGNÓSTICO TEMPORAL (24/11/2026): verifica en el hosting si la sesión se conserva al regenerarse. Se eliminará.
-Route::get('/diagnostico-sesion', function (\Illuminate\Http\Request $r) {
-    $s = $r->session();
-    $n = $s->get('diag_n', 0) + 1;
-    $s->put('diag_n', $n);
-    if ($r->boolean('regenerar')) {
-        $s->migrate(true);
-    }
-    return response()->json([
-        'visitas_en_esta_sesion' => $n,
-        'id' => substr($s->getId(), 0, 6),
-        'usuarios_registrados' => \App\Models\User::count(),
-        'sesiones_con_usuario' => \Illuminate\Support\Facades\DB::table('sessions')->whereNotNull('user_id')->count(),
-        'sesiones_total' => \Illuminate\Support\Facades\DB::table('sessions')->count(),
-        'hora_php' => now()->toDateTimeString(),
-    ]);
-});
